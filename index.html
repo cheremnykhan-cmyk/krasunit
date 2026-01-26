@@ -910,7 +910,7 @@
                       `📎 ${filesInfo}`;
       
       // Отправляем в Telegram
-      fetch(`https://api.telegram.org/7958824238:AAGTyFNDncbhf_2BmJ7B30xt8BRog8MxPVw/sendMessage`, {
+      fetch(`https://api.telegram.org/bot7958824238:AAGTyFNDncbhf_2BmJ7B30xt8BRog8MxPVw/sendMessage`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -928,15 +928,25 @@
           throw new Error('Ошибка отправки в Telegram');
         }
       })
-      .catch(error => {
-        console.error('Ошибка:', error);
-        alert('❌ Не удалось отправить заявку. Пожалуйста, напишите нам в Telegram @krasunit_bot или позвоните по телефону.');
-      })
-      .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Получить расчёт бесплатно';
-      });
-    });
-  </script>
-</body>
-</html>
+  // После неудачной отправки в Telegram
+.catch(error => {
+  console.error('Ошибка отправки в Telegram:', error);
+  
+  // Резервная отправка на email
+  const formData = new FormData();
+  formData.append('city', data.city);
+  formData.append('phone', data.phone);
+  formData.append('email', data.email);
+  formData.append('comments', data.comments);
+  
+  fetch('https://formspree.io/f/krasunit@mail.ru', {
+    method: 'POST',
+    body: formData
+  })
+  .then(() => {
+    alert('✅ Спасибо за заявку!\n\nTelegram временно недоступен, но мы получили вашу заявку по email и ответим в течение 2 часов.');
+  })
+  .catch(() => {
+    alert('❌ Не удалось отправить заявку ни в Telegram, ни на email.\n\nПожалуйста, напишите нам напрямую: @krasunit_bot или позвоните: +7 (391) 282-23-40');
+  });
+});
