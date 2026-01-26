@@ -1,43 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106449823', 'ym');
-
-    ym(106449823, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/106449823" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Калькулятор стоимости — КрасЮнит</title>
   <meta name="description" content="Онлайн калькулятор стоимости гаражей, ангаров и складов из ЛСТК под ключ. Точный расчет с учетом фундамента.">
-  <meta name="keywords" content="калькулятор стоимости гаража, расчет ангаров из ЛСТК, стоимость склада из сэндвич панелей">
   <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
-     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-     ym(106448314, "init", {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true,
-          webvisor:true
-     });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
   <style>
     * {
       margin: 0;
@@ -89,7 +57,7 @@
       background: #f9fbfd;
       border-radius: 8px;
     }
-    .calc-box, .form-box {
+    .calc-box {
       background: #eef3ff;
       padding: 25px;
       border-radius: 10px;
@@ -159,31 +127,6 @@
       color: #666;
       margin-top: 5px;
       font-style: italic;
-    }
-    button {
-      background: #2A52BE;
-      color: white;
-      border: none;
-      padding: 14px 25px;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: all 0.3s;
-      display: block;
-      width: 100%;
-      font-weight: 500;
-    }
-    button:hover {
-      background: #22439a;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    button:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
     }
     .result {
       margin-top: 20px;
@@ -271,7 +214,7 @@
         flex-direction: column;
         gap: 10px;
       }
-      .calc-box, .form-box {
+      .calc-box {
         padding: 20px;
       }
     }
@@ -370,8 +313,6 @@
         </div>
         
         <div id="result" class="result">Выберите тип фундамента для расчета общей стоимости</div>
-        
-        <button id="calculateBtn" onclick="calculate()">Рассчитать полную стоимость</button>
       </div>
     </div>
 
@@ -438,7 +379,6 @@
       const heightInput = document.getElementById('height');
       const foundationType = document.getElementById('foundationType').value;
       const resultEl = document.getElementById('result');
-      const calculateBtn = document.getElementById('calculateBtn');
       
       // Валидация полей
       let isValid = true;
@@ -473,11 +413,8 @@
       
       if (!isValid) {
         resultEl.innerHTML = "<span style='color:red'>Пожалуйста, заполните все поля корректно</span>";
-        calculateBtn.disabled = true;
         return;
       }
-      
-      calculateBtn.disabled = false;
       
       const length = parseFloat(lengthInput.value);
       const width = parseFloat(widthInput.value);
@@ -555,20 +492,8 @@
         }
       });
       
-      // Плавная прокрутка для всех ссылок с классом smooth-scroll
-      document.querySelectorAll('.smooth-scroll').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 20,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
+      // Первый расчет при загрузке страницы
+      calculate();
     });
     
     // Форма заявки
