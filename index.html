@@ -6,23 +6,7 @@
   <title>КрасЮнит — гаражи и ангары из ЛСТК под ключ</title>
   <meta name="description" content="Изготовление гаражей, ангаров, складов и боксов из ЛСТК по всей России. Низкая стоимость, быстрые сроки, экономия на отоплении.">
   <meta name="keywords" content="гараж из ЛСТК, ангар из сэндвич панелей, склад под ключ, строительство ангаров, ЛСТК конструкции">
-  <meta property="og:title" content="КрасЮнит — гаражи и ангары из ЛСТК под ключ">
-  <meta property="og:description" content="Строительство гаражей, ангаров, складов из ЛСТК по всей России. Гарантия 10 лет. Расчет стоимости онлайн.">
   <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
-     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-     ym(00000000, "init", {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true,
-          webvisor:true
-     });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
   <style>
     * {
       margin: 0;
@@ -173,6 +157,75 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+    .file-upload-container {
+      margin: 15px 0;
+      position: relative;
+    }
+    .file-upload-label {
+      display: block;
+      padding: 12px;
+      background: #f8f9fa;
+      border: 2px dashed #ddd;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 10px;
+    }
+    .file-upload-label:hover {
+      border-color: #2A52BE;
+      background: #eef3ff;
+    }
+    .file-upload-label i {
+      font-size: 2rem;
+      color: #2A52BE;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .file-upload-input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    .file-list {
+      margin-top: 10px;
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 6px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .file-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .file-item:last-child {
+      border-bottom: none;
+    }
+    .file-name {
+      color: #2A52BE;
+      font-weight: 500;
+    }
+    .file-remove {
+      color: #dc3545;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+    }
+    .allowed-types {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 5px;
+      font-style: italic;
+    }
     footer {
       text-align: center;
       padding: 20px;
@@ -188,7 +241,8 @@
     }
     .advantages-grid > *:nth-child(7),
     .advantages-grid > *:nth-child(8),
-    .advantages-grid > *:nth-child(9) {
+    .advantages-grid > *:nth-child(9),
+    .advantages-grid > *:nth-child(10) {
       margin-bottom: 0;
     }
     @media (max-width: 768px) {
@@ -231,9 +285,6 @@
   </style>
 </head>
 <body>
-<a href="projects.html" target="_blank" class="nav-link">📊 Примеры работ</a>
-<a href="construction.html" target="_blank" class="nav-link">🔍 Детали конструкции</a>
-<a href="calculator.html" target="_blank" class="nav-link">💰 Калькулятор стоимости</a>
   <div class="container">
     <header>
       <div style="text-align: center; margin-bottom: 20px">
@@ -244,8 +295,9 @@
     </header>
 
     <div class="nav-links">
-      <a href="projects.html" target="_blank" class="nav-link">Посмотреть наши проекты</a>
-      <a href="calculator.html" target="_blank" class="nav-link">Рассчитать стоимость</a>
+      <a href="/krasunit/projects.html" target="_blank" class="nav-link">Примеры работ</a>
+      <a href="/krasunit/construction.html" target="_blank" class="nav-link">Детали конструкции</a>
+      <a href="/krasunit/calculator.html" target="_blank" class="nav-link">Калькулятор стоимости</a>
     </div>
 
     <div class="section">
@@ -297,23 +349,18 @@
           <p><strong>Защита от внешних источников:</strong> здания устойчивы к искрам от сварочных работ, коротким замыканиям и другим внешним факторам. <strong>Экономическая выгода:</strong> снижение страховых взносов на 15-25% благодаря высокому классу пожарной безопасности. <strong>Гарантия:</strong> все конструкции проходят сертификацию в испытательных центрах МЧС России.</p>
         </div>
         
-        <!-- НОВОЕ ПРЕИМУЩЕСТВО: САНИТАРНО-ГИГИЕНИЧЕСКИЕ СВОЙСТВА -->
         <div class="advantage-card">
           <h3>🧼 Отличные санитарно-гигиенические свойства</h3>
           <p><strong>Гладкие поверхности сэндвич-панелей</strong> не накапливают пыль, бактерии и грибок, что особенно важно для пищевых предприятий, складов готовой продукции и медицинских объектов. <strong>Легкость очистки:</strong> внутренние поверхности можно мыть моющими средствами без риска повреждения покрытия.</p>
           <p><strong>Гигиеничность:</strong> отсутствие щелей и стыков препятствует проникновению насекомых и грызунов. <strong>Сертификаты:</strong> материалы соответствуют санитарно-эпидемиологическим требованиям (СЭЗ) для использования в объектах пищевой промышленности и складах ГСМ. <strong>Экономия:</strong> снижение затрат на дезинфекцию и обслуживание по сравнению с традиционными зданиями.</p>
         </div>
+        
+        <div class="advantage-card">
+          <h3>♻️ Экологичность материалов</h3>
+          <p><strong>Сэндвич-панели</strong> изготавливаются из экологически чистых материалов, не выделяющих вредных веществ в процессе эксплуатации. <strong>Металлический каркас</strong> на 98% подлежит вторичной переработке в конце срока эксплуатации.</p>
+          <p><strong>Энергоэффективность:</strong> использование материалов с низким углеродным следом при производстве. <strong>Соответствие стандартам:</strong> все материалы имеют сертификаты экологической безопасности для строительства жилых и общественных зданий.</p>
+        </div>
       </div>
-<div class="section">
-  <h2>Конструкция зданий из ЛСТК</h2>
-  <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px;">
-    Все здания строятся по единой технологии с использованием стандартных элементов, что позволяет сократить сроки строительства и снизить стоимость.
-  </p>
-  
-  <div style="text-align: center; margin-top: 25px;">
-    <a href="construction.html" class="projects-button">Посмотреть детальную схему конструкции</a>
-  </div>
-</div>
     </div>
 
     <div class="section">
@@ -331,6 +378,19 @@
           
           <label>Дополнительные пожелания</label>
           <textarea name="comments" rows="3" placeholder="Опишите ваши требования подробнее"></textarea>
+          
+          <div class="file-upload-container">
+            <label class="file-upload-label">
+              <i>📎</i>
+              <span>Перетащите файлы сюда или нажмите для выбора</span>
+              <p class="allowed-types">Разрешены: PDF, DWG (AutoCAD), CDW (Компас 3D), MCAD (MathCAD), JPG, PNG (до 20 МБ)</p>
+            </label>
+            <input type="file" class="file-upload-input" id="fileUpload" multiple 
+                   accept=".pdf,.dwg,.dxf,.cdw,.mcd,.jpg,.jpeg,.png,.bmp">
+            <div class="file-list" id="fileList">
+              <p class="no-files">Файлы не выбраны</p>
+            </div>
+          </div>
           
           <button type="submit">Получить расчёт бесплатно</button>
         </form>
@@ -352,14 +412,151 @@
   </footer>
 
   <script>
+    // Управление загрузкой файлов
+    document.addEventListener('DOMContentLoaded', function() {
+      const fileInput = document.getElementById('fileUpload');
+      const fileList = document.getElementById('fileList');
+      const noFilesText = document.querySelector('.no-files');
+      
+      // Обработчик выбора файлов
+      fileInput.addEventListener('change', function(e) {
+        updateFileList(this.files);
+      });
+      
+      // Обработчик перетаскивания файлов
+      const dropArea = document.querySelector('.file-upload-label');
+      
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+      });
+      
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+      });
+      
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+      });
+      
+      function highlight() {
+        dropArea.style.borderColor = '#2A52BE';
+        dropArea.style.backgroundColor = '#e3ebff';
+      }
+      
+      function unhighlight() {
+        dropArea.style.borderColor = '#ddd';
+        dropArea.style.backgroundColor = '#f8f9fa';
+      }
+      
+      dropArea.addEventListener('drop', handleDrop, false);
+      
+      function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files;
+        updateFileList(files);
+      }
+      
+      function updateFileList(files) {
+        fileList.innerHTML = '';
+        
+        if (files.length === 0) {
+          fileList.innerHTML = '<p class="no-files">Файлы не выбраны</p>';
+          return;
+        }
+        
+        // Ограничение: максимум 10 файлов
+        if (files.length > 10) {
+          alert('Можно загрузить максимум 10 файлов. Будут загружены первые 10.');
+        }
+        
+        // Проверка размера файлов (максимум 20 МБ каждый)
+        let validFiles = [];
+        for (let i = 0; i < Math.min(files.length, 10); i++) {
+          const file = files[i];
+          if (file.size > 20 * 1024 * 1024) {
+            alert(`Файл "${file.name}" превышает максимальный размер (20 МБ) и будет пропущен.`);
+          } else {
+            validFiles.push(file);
+          }
+        }
+        
+        if (validFiles.length === 0) {
+          fileList.innerHTML = '<p class="no-files">Все файлы превышают допустимый размер</p>';
+          return;
+        }
+        
+        validFiles.forEach((file, index) => {
+          const fileItem = document.createElement('div');
+          fileItem.className = 'file-item';
+          
+          const fileName = document.createElement('span');
+          fileName.className = 'file-name';
+          fileName.textContent = `${index + 1}. ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} МБ)`;
+          
+          const removeBtn = document.createElement('button');
+          removeBtn.className = 'file-remove';
+          removeBtn.innerHTML = '&times;';
+          removeBtn.title = 'Удалить файл';
+          removeBtn.addEventListener('click', function() {
+            removeFile(index);
+          });
+          
+          fileItem.appendChild(fileName);
+          fileItem.appendChild(removeBtn);
+          fileList.appendChild(fileItem);
+        });
+        
+        if (validFiles.length !== files.length) {
+          fileList.insertAdjacentHTML('beforeend', 
+            `<p style="color: #dc3545; font-size: 0.9rem; margin-top: 5px;">
+              Некоторые файлы были пропущены из-за превышения размера
+            </p>`
+          );
+        }
+      }
+      
+      function removeFile(index) {
+        const dt = new DataTransfer();
+        const inputFiles = Array.from(fileInput.files);
+        
+        inputFiles.forEach((file, i) => {
+          if (i !== index) {
+            dt.items.add(file);
+          }
+        });
+        
+        fileInput.files = dt.files;
+        updateFileList(fileInput.files);
+      }
+    });
+    
     // Форма заявки
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
       const city = document.querySelector('[name="city"]').value;
-      alert(`✅ Спасибо за заявку!\n\nДля города ${city} мы рассчитаем точную стоимость в течение 2 часов и вышлем детальный расчет на ваш email или телефон.`);
+      const fileInput = document.getElementById('fileUpload');
       
+      let message = `✅ Спасибо за заявку!\n\nДля города ${city} мы рассчитаем точную стоимость в течение 2 часов.`;
+      
+      if (fileInput.files.length > 0) {
+        message += `\n\n✅ Обнаружено файлов для обработки: ${fileInput.files.length}`;
+        message += `\nСпециалист рассмотрит ваши чертежи и техническое задание.`;
+      }
+      
+      message += `\n\nРасчет будет выслан на ваш email или телефон.`;
+      
+      alert(message);
       this.reset();
+      
+      // Очистка списка файлов
+      document.getElementById('fileList').innerHTML = '<p class="no-files">Файлы не выбраны</p>';
     });
   </script>
 </body>
