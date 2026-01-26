@@ -118,7 +118,7 @@
       font-size: 1.05rem;
       color: #2A52BE;
     }
-    input, select, textarea {
+    input, select, textarea, .file-upload {
       width: 100%;
       padding: 12px;
       border: 1px solid #ddd;
@@ -126,7 +126,7 @@
       font-size: 16px;
       transition: border-color 0.3s;
     }
-    input:focus, select:focus, textarea:focus {
+    input:focus, select:focus, textarea:focus, .file-upload:focus {
       outline: none;
       border-color: #2A52BE;
       box-shadow: 0 0 0 2px rgba(42, 82, 190, 0.2);
@@ -243,6 +243,76 @@
     .smooth-scroll {
       scroll-behavior: smooth;
     }
+    /* Стили для загрузки файлов */
+    .file-upload-container {
+      margin: 15px 0;
+      position: relative;
+    }
+    .file-upload-label {
+      display: block;
+      padding: 12px;
+      background: #f8f9fa;
+      border: 2px dashed #ddd;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 10px;
+    }
+    .file-upload-label:hover {
+      border-color: #2A52BE;
+      background: #eef3ff;
+    }
+    .file-upload-label i {
+      font-size: 2rem;
+      color: #2A52BE;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .file-upload-input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    .file-list {
+      margin-top: 10px;
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 6px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .file-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .file-item:last-child {
+      border-bottom: none;
+    }
+    .file-name {
+      color: #2A52BE;
+      font-weight: 500;
+    }
+    .file-remove {
+      color: #dc3545;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+    }
+    .allowed-types {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 5px;
+      font-style: italic;
+    }
     @media (min-width: 769px) and (max-width: 1024px) {
       .advantages-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -269,6 +339,9 @@
         padding: 12px;
         font-size: 15px;
       }
+      .file-upload-label {
+        padding: 10px;
+      }
     }
     @media (max-width: 480px) {
       .container {
@@ -283,7 +356,7 @@
       .project-card img {
         height: 160px;
       }
-      input, select, textarea {
+      input, select, textarea, .file-upload {
         font-size: 18px;
         padding: 14px;
       }
@@ -464,7 +537,7 @@
     </div>
 
     <div class="section" id="contact">
-      <h2>Получите точный расчёт</h2>
+      <h2>Получите точный расчёт и прикрепите чертежи</h2>
       <div class="form-box">
         <form id="contactForm">
           <label>Город / регион *</label>
@@ -478,6 +551,19 @@
           
           <label>Дополнительные пожелания</label>
           <textarea name="comments" rows="3" placeholder="Опишите ваши требования подробнее"></textarea>
+          
+          <div class="file-upload-container">
+            <label class="file-upload-label">
+              <i>📎</i>
+              <span>Перетащите файлы сюда или нажмите для выбора</span>
+              <p class="allowed-types">Разрешены: PDF, DWG (AutoCAD), CDW (Компас 3D), MCAD (MathCAD), JPG, PNG (до 20 МБ)</p>
+            </label>
+            <input type="file" class="file-upload-input" id="fileUpload" multiple 
+                   accept=".pdf,.dwg,.dxf,.cdw,.mcd,.jpg,.jpeg,.png,.bmp">
+            <div class="file-list" id="fileList">
+              <p class="no-files">Файлы не выбраны</p>
+            </div>
+          </div>
           
           <button type="submit">Получить расчёт бесплатно</button>
         </form>
@@ -514,7 +600,155 @@
       }
     });
     
-    // Калькулятор
+    // Управление загрузкой файлов
+    document.addEventListener('DOMContentLoaded', function() {
+      const fileInput = document.getElementById('fileUpload');
+      const fileList = document.getElementById('fileList');
+      const noFilesText = document.querySelector('.no-files');
+      
+      // Обработчик выбора файлов
+      fileInput.addEventListener('change', function(e) {
+        updateFileList(this.files);
+      });
+      
+      // Обработчик перетаскивания файлов
+      const dropArea = document.querySelector('.file-upload-label');
+      
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, preventDefaults, false);
+      });
+      
+      function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropArea.addEventListener(eventName, highlight, false);
+      });
+      
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropArea.addEventListener(eventName, unhighlight, false);
+      });
+      
+      function highlight() {
+        dropArea.style.borderColor = '#2A52BE';
+        dropArea.style.backgroundColor = '#e3ebff';
+      }
+      
+      function unhighlight() {
+        dropArea.style.borderColor = '#ddd';
+        dropArea.style.backgroundColor = '#f8f9fa';
+      }
+      
+      dropArea.addEventListener('drop', handleDrop, false);
+      
+      function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files;
+        updateFileList(files);
+      }
+      
+      function updateFileList(files) {
+        fileList.innerHTML = '';
+        
+        if (files.length === 0) {
+          fileList.innerHTML = '<p class="no-files">Файлы не выбраны</p>';
+          return;
+        }
+        
+        // Ограничение: максимум 10 файлов
+        if (files.length > 10) {
+          alert('Можно загрузить максимум 10 файлов. Будут загружены первые 10.');
+        }
+        
+        // Проверка размера файлов (максимум 20 МБ каждый)
+        let validFiles = [];
+        for (let i = 0; i < Math.min(files.length, 10); i++) {
+          const file = files[i];
+          if (file.size > 20 * 1024 * 1024) {
+            alert(`Файл "${file.name}" превышает максимальный размер (20 МБ) и будет пропущен.`);
+          } else {
+            validFiles.push(file);
+          }
+        }
+        
+        if (validFiles.length === 0) {
+          fileList.innerHTML = '<p class="no-files">Все файлы превышают допустимый размер</p>';
+          return;
+        }
+        
+        validFiles.forEach((file, index) => {
+          const fileItem = document.createElement('div');
+          fileItem.className = 'file-item';
+          
+          const fileName = document.createElement('span');
+          fileName.className = 'file-name';
+          fileName.textContent = `${index + 1}. ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} МБ)`;
+          
+          const removeBtn = document.createElement('button');
+          removeBtn.className = 'file-remove';
+          removeBtn.innerHTML = '&times;';
+          removeBtn.title = 'Удалить файл';
+          removeBtn.addEventListener('click', function() {
+            removeFile(index);
+          });
+          
+          fileItem.appendChild(fileName);
+          fileItem.appendChild(removeBtn);
+          fileList.appendChild(fileItem);
+        });
+        
+        if (validFiles.length !== files.length) {
+          fileList.insertAdjacentHTML('beforeend', 
+            `<p style="color: #dc3545; font-size: 0.9rem; margin-top: 5px;">
+              Некоторые файлы были пропущены из-за превышения размера
+            </p>`
+          );
+        }
+      }
+      
+      function removeFile(index) {
+        const dt = new DataTransfer();
+        const inputFiles = Array.from(fileInput.files);
+        
+        inputFiles.forEach((file, i) => {
+          if (i !== index) {
+            dt.items.add(file);
+          }
+        });
+        
+        fileInput.files = dt.files;
+        updateFileList(fileInput.files);
+      }
+      
+      // Калькулятор
+      document.getElementById('length').addEventListener('input', calculate);
+      document.getElementById('width').addEventListener('input', calculate);
+      document.getElementById('height').addEventListener('input', calculate);
+      document.getElementById('foundationType').addEventListener('change', calculate);
+      
+      document.querySelectorAll('#lentochnyFields input, #plitaFields input').forEach(input => {
+        input.addEventListener('input', calculate);
+      });
+      
+      // Плавная прокрутка для всех ссылок с классом smooth-scroll
+      document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 20,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+    
     function calculate() {
       const length = parseFloat(document.getElementById('length').value);
       const width = parseFloat(document.getElementById('width').value);
@@ -583,41 +817,27 @@
       resultEl.innerHTML = resultHTML;
     }
     
-    // Автоматический расчет при загрузке и изменении полей
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('length').addEventListener('input', calculate);
-      document.getElementById('width').addEventListener('input', calculate);
-      document.getElementById('height').addEventListener('input', calculate);
-      document.getElementById('foundationType').addEventListener('change', calculate);
-      
-      document.querySelectorAll('#lentochnyFields input, #plitaFields input').forEach(input => {
-        input.addEventListener('input', calculate);
-      });
-      
-      // Плавная прокрутка для всех ссылок с классом smooth-scroll
-      document.querySelectorAll('.smooth-scroll').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 20,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    });
-    
     // Форма заявки
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
       const city = document.querySelector('[name="city"]').value;
-      alert(`✅ Спасибо за заявку!\n\nДля города ${city} мы рассчитаем точную стоимость в течение 2 часов и вышлем детальный расчет на ваш email или телефон.`);
+      const fileInput = document.getElementById('fileUpload');
       
+      let message = `✅ Спасибо за заявку!\n\nДля города ${city} мы рассчитаем точную стоимость в течение 2 часов.`;
+      
+      if (fileInput.files.length > 0) {
+        message += `\n\n✅ Обнаружено файлов для обработки: ${fileInput.files.length}`;
+        message += `\nСпециалист рассмотрит ваши чертежи и техническое задание.`;
+      }
+      
+      message += `\n\nРасчет будет выслан на ваш email или телефон.`;
+      
+      alert(message);
       this.reset();
+      
+      // Очистка списка файлов
+      document.getElementById('fileList').innerHTML = '<p class="no-files">Файлы не выбраны</p>';
     });
   </script>
 </body>
