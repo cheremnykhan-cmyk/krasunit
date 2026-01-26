@@ -5,7 +5,278 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Калькулятор стоимости — КрасЮнит</title>
   <meta name="description" content="Онлайн калькулятор стоимости гаражей, ангаров и складов из ЛСТК под ключ. Точный расчет с учетом фундамента.">
-  <link rel="stylesheet" href="/krasunit/style.css">
+  <meta name="keywords" content="калькулятор стоимости гаража, расчет ангаров из ЛСТК, стоимость склада из сэндвич панелей">
+  <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+     ym(00000000, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true
+     });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #2A52BE;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #2A52BE;
+      margin-bottom: 15px;
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      color: #555;
+      font-weight: 300;
+      margin-top: 10px;
+    }
+    h2 {
+      color: #2A52BE;
+      margin: 25px 0 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+      font-size: 1.8rem;
+    }
+    .section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #f9fbfd;
+      border-radius: 8px;
+    }
+    .calc-box, .form-box {
+      background: #eef3ff;
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 15px;
+      border: 1px solid #ddd;
+    }
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav-link {
+      background: #2A52BE;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s;
+      display: inline-block;
+      text-align: center;
+    }
+    .nav-link:hover {
+      background: #22439a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 15px 0 8px;
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: #2A52BE;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #2A52BE;
+      box-shadow: 0 0 0 2px rgba(42, 82, 190, 0.2);
+    }
+    .input-error {
+      border-color: #dc3545 !important;
+      animation: shake 0.3s;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+    .error-message {
+      color: #dc3545;
+      font-size: 0.85rem;
+      margin-top: 5px;
+      display: block;
+    }
+    .hint {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    button {
+      background: #2A52BE;
+      color: white;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s;
+      display: block;
+      width: 100%;
+      font-weight: 500;
+    }
+    button:hover {
+      background: #22439a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      color: #2A52BE;
+      font-weight: bold;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .result small {
+      display: block;
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: normal;
+      margin-top: 8px;
+    }
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #2A52BE;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border: 1px solid #2A52BE;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+    .back-link:hover {
+      background: #2A52BE;
+      color: white;
+    }
+    .foundation-section {
+      background: #f0f8ff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 15px;
+      display: none;
+      border: 1px solid #bee5eb;
+    }
+    .foundation-section h3 {
+      color: #155724;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      margin-top: 30px;
+      border-top: 1px solid #eee;
+      font-size: 0.95rem;
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-link {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      button, .nav-link {
+        padding: 12px;
+        font-size: 15px;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .calc-box, .form-box {
+        padding: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      input, select {
+        font-size: 18px;
+        padding: 14px;
+      }
+      button {
+        padding: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -17,19 +288,26 @@
       <p class="subtitle">Рассчитайте стоимость вашего объекта из ЛСТК под ключ</p>
     </header>
 
-    <a href="/krasunit/" class="back-link">← Вернуться на главную страницу</a>
+    <div class="nav-links">
+      <a href="/krasunit/projects.html" target="_blank" class="nav-link">Примеры работ</a>
+      <a href="/krasunit/construction.html" target="_blank" class="nav-link">Детали конструкции</a>
+      <a href="/krasunit/" class="nav-link">Главная страница</a>
+    </div>
 
     <div class="section">
       <h2>Рассчитайте стоимость онлайн</h2>
       <div class="calc-box">
         <label>Длина (м)</label>
-        <input type="number" id="length" min="4" max="20" step="0.5" value="6">
+        <input type="number" id="length" min="4" max="20" step="0.5" value="6" required>
+        <div class="hint">Рекомендуемый диапазон: от 4 до 20 метров</div>
         
         <label>Ширина (м)</label>
-        <input type="number" id="width" min="4" max="12" step="0.5" value="6">
+        <input type="number" id="width" min="4" max="12" step="0.5" value="6" required>
+        <div class="hint">Рекомендуемый диапазон: от 4 до 12 метров</div>
         
         <label>Высота (м)</label>
-        <input type="number" id="height" min="2.5" max="8" step="0.5" value="4">
+        <input type="number" id="height" min="2.5" max="8" step="0.5" value="4" required>
+        <div class="hint">Рекомендуемый диапазон: от 2.5 до 8 метров</div>
         
         <label>Тип фундамента *</label>
         <select id="foundationType" required>
@@ -44,34 +322,39 @@
         <div id="lentochnyFields" class="foundation-section">
           <h3>Параметры ленточного фундамента</h3>
           <label>Периметр ленты (м)</label>
-          <input type="number" id="perimeter" min="10" max="100" step="0.5" value="24">
+          <input type="number" id="perimeter" min="10" max="100" step="0.5" value="24" required>
           
           <label>Высота ленты (м)</label>
-          <input type="number" id="foundationHeight" min="0.3" max="2" step="0.1" value="0.8">
+          <input type="number" id="foundationHeight" min="0.3" max="2" step="0.1" value="0.8" required>
           
           <label>Ширина ленты (м)</label>
-          <input type="number" id="foundationWidth" min="0.3" max="1" step="0.1" value="0.5">
+          <input type="number" id="foundationWidth" min="0.3" max="1" step="0.1" value="0.5" required>
         </div>
         
         <div id="plitaFields" class="foundation-section">
           <h3>Параметры монолитной плиты</h3>
           <label>Длина плиты (м)</label>
-          <input type="number" id="slabLength" min="4" max="20" step="0.5" value="6">
+          <input type="number" id="slabLength" min="4" max="20" step="0.5" value="6" required>
           
           <label>Ширина плиты (м)</label>
-          <input type="number" id="slabWidth" min="4" max="12" step="0.5" value="6">
+          <input type="number" id="slabWidth" min="4" max="12" step="0.5" value="6" required>
           
           <label>Высота плиты (м)</label>
-          <input type="number" id="slabHeight" min="0.2" max="0.5" step="0.05" value="0.3">
+          <input type="number" id="slabHeight" min="0.2" max="0.5" step="0.05" value="0.3" required>
         </div>
         
         <div id="requestFields" class="foundation-section">
-          <p style="font-weight: bold; color: #2A52BE;">Детальный расчет стоимости фундамента будет предоставлен специалистом после уточнения всех параметров.</p>
+          <p style="font-weight: bold; color: #155724; margin: 0;">
+            Детальный расчет стоимости фундамента будет предоставлен специалистом после уточнения всех параметров.
+          </p>
+          <p style="color: #666; margin-top: 8px; font-size: 0.9rem;">
+            Для точного расчета необходимо учесть тип грунта, глубину промерзания и нагрузку на фундамент.
+          </p>
         </div>
         
         <div id="result" class="result">Выберите тип фундамента для расчета общей стоимости</div>
         
-        <button onclick="calculate()">Рассчитать полную стоимость</button>
+        <button id="calculateBtn" onclick="calculate()">Рассчитать полную стоимость</button>
       </div>
     </div>
 
@@ -84,14 +367,15 @@
           
           <label>Телефон *</label>
           <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__">
+          <div class="hint">Мы свяжемся с вами в течение 2 часов</div>
           
           <label>Email</label>
           <input type="email" name="email" placeholder="Ваш email для отправки расчёта">
           
           <label>Дополнительные пожелания</label>
-          <textarea name="comments" rows="3" placeholder="Опишите ваши требования подробнее"></textarea>
+          <textarea name="comments" rows="3" placeholder="Опишите ваши требования подробнее" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-top: 8px; resize: vertical;"></textarea>
           
-          <button type="submit">Получить расчёт бесплатно</button>
+          <button type="submit" id="submitBtn">Получить расчёт бесплатно</button>
         </form>
       </div>
     </div>
@@ -103,32 +387,91 @@
       Email: KrasUnit@mail.ru<br>
       Телефон: +7 (391) 282-23-40<br>
       Работаем по всей России</p>
+      <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+        © 2026 КрасЮнит. Все права защищены.
+      </p>
     </div>
   </footer>
 
   <script>
-    // Код для калькулятора и формы
+    // Показать/скрыть поля фундамента в зависимости от выбора
+    document.getElementById('foundationType').addEventListener('change', function() {
+      document.getElementById('lentochnyFields').style.display = 'none';
+      document.getElementById('plitaFields').style.display = 'none';
+      document.getElementById('requestFields').style.display = 'none';
+      
+      if (this.value === 'lentochny') {
+        document.getElementById('lentochnyFields').style.display = 'block';
+      } else if (this.value === 'plita') {
+        document.getElementById('plitaFields').style.display = 'block';
+      } else if (this.value !== 'none') {
+        document.getElementById('requestFields').style.display = 'block';
+      }
+      
+      // Выполнить расчет при смене типа фундамента
+      if (this.value !== 'none') {
+        calculate();
+      }
+    });
+    
+    // Калькулятор
     function calculate() {
-      // Расчет стоимости, как в основной версии
-      const length = parseFloat(document.getElementById('length').value);
-      const width = parseFloat(document.getElementById('width').value);
-      const height = parseFloat(document.getElementById('height').value);
+      const lengthInput = document.getElementById('length');
+      const widthInput = document.getElementById('width');
+      const heightInput = document.getElementById('height');
       const foundationType = document.getElementById('foundationType').value;
       const resultEl = document.getElementById('result');
+      const calculateBtn = document.getElementById('calculateBtn');
       
-      if (!length || !width || !height || foundationType === 'none') {
-        resultEl.innerHTML = "<span style='color:red'>Пожалуйста, заполните все поля и выберите тип фундамента</span>";
+      // Валидация полей
+      let isValid = true;
+      
+      if (!lengthInput.value || parseFloat(lengthInput.value) < 4 || parseFloat(lengthInput.value) > 20) {
+        lengthInput.classList.add('input-error');
+        isValid = false;
+      } else {
+        lengthInput.classList.remove('input-error');
+      }
+      
+      if (!widthInput.value || parseFloat(widthInput.value) < 4 || parseFloat(widthInput.value) > 12) {
+        widthInput.classList.add('input-error');
+        isValid = false;
+      } else {
+        widthInput.classList.remove('input-error');
+      }
+      
+      if (!heightInput.value || parseFloat(heightInput.value) < 2.5 || parseFloat(heightInput.value) > 8) {
+        heightInput.classList.add('input-error');
+        isValid = false;
+      } else {
+        heightInput.classList.remove('input-error');
+      }
+      
+      if (foundationType === 'none') {
+        document.getElementById('foundationType').classList.add('input-error');
+        isValid = false;
+      } else {
+        document.getElementById('foundationType').classList.remove('input-error');
+      }
+      
+      if (!isValid) {
+        resultEl.innerHTML = "<span style='color:red'>Пожалуйста, заполните все поля корректно</span>";
+        calculateBtn.disabled = true;
         return;
       }
       
-      // Расчет стоимости здания
+      calculateBtn.disabled = false;
+      
+      const length = parseFloat(lengthInput.value);
+      const width = parseFloat(widthInput.value);
+      const height = parseFloat(heightInput.value);
+      
       const area = length * width;
       const basePrice = area * 22500;
       const baseHeight = area <= 100 ? 3.5 : 6;
       const extra = Math.max(0, height - baseHeight);
       const buildingCost = basePrice * (1 + extra * 0.15);
       
-      // Расчет стоимости фундамента
       let foundationCost = 0;
       
       if (foundationType === 'lentochny') {
@@ -137,8 +480,8 @@
         const fWidth = parseFloat(document.getElementById('foundationWidth').value);
         
         const concreteVolume = perimeter * fHeight * fWidth;
-        const rebarVolume = concreteVolume * 0.15; // 15% от объема бетона
-        const rebarWeight = rebarVolume * 2.5; // приблизительный вес арматуры
+        const rebarVolume = concreteVolume * 0.15;
+        const rebarWeight = rebarVolume * 2.5;
         const concreteCost = concreteVolume * 9500;
         const rebarCost = rebarWeight * 80000;
         const workCost = concreteVolume * 19850;
@@ -160,10 +503,8 @@
         foundationCost = concreteCost + rebarCost + workCost;
       }
       
-      // Общая стоимость
       const totalCost = buildingCost + foundationCost;
       
-      // Формирование результата
       let resultHTML = `
         Ориентировочная стоимость здания: <strong>${Math.round(buildingCost).toLocaleString('ru-RU')} ₽</strong>
       `;
@@ -181,32 +522,69 @@
       resultEl.innerHTML = resultHTML;
     }
     
-    // Показать/скрыть поля фундамента
-    document.getElementById('foundationType').addEventListener('change', function() {
-      document.getElementById('lentochnyFields').style.display = 'none';
-      document.getElementById('plitaFields').style.display = 'none';
-      document.getElementById('requestFields').style.display = 'none';
+    // Автоматический расчет при загрузке и изменении полей
+    document.addEventListener('DOMContentLoaded', function() {
+      const fields = ['length', 'width', 'height', 'perimeter', 'foundationHeight', 'foundationWidth', 'slabLength', 'slabWidth', 'slabHeight'];
       
-      if (this.value === 'lentochny') {
-        document.getElementById('lentochnyFields').style.display = 'block';
-      } else if (this.value === 'plita') {
-        document.getElementById('plitaFields').style.display = 'block';
-      } else if (this.value !== 'none') {
-        document.getElementById('requestFields').style.display = 'block';
-      }
+      fields.forEach(field => {
+        const element = document.getElementById(field);
+        if (element) {
+          element.addEventListener('input', function() {
+            // Удаляем класс ошибки при вводе
+            this.classList.remove('input-error');
+            // Запускаем расчет с задержкой для оптимизации
+            setTimeout(calculate, 300);
+          });
+        }
+      });
+      
+      // Плавная прокрутка для всех ссылок с классом smooth-scroll
+      document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 20,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
     });
     
     // Форма заявки
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Отправка...';
+      
       const city = document.querySelector('[name="city"]').value;
-      alert(`✅ Спасибо за заявку!\n\nДля города ${city} мы рассчитаем точную стоимость в течение 2 часов и вышлем детальный расчет на ваш email или телефон.`);
-      this.reset();
-    });
-    
-    // Автоматический расчет при загрузке
-    document.addEventListener('DOMContentLoaded', function() {
-      calculate();
+      const phone = document.querySelector('[name="phone"]').value;
+      
+      // Простая валидация телефона
+      if (!phone.match(/^\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}$/)) {
+        alert('Пожалуйста, введите корректный номер телефона в формате +7 (XXX) XXX-XX-XX');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Получить расчёт бесплатно';
+        return;
+      }
+      
+      // Моделирование отправки данных
+      setTimeout(() => {
+        let message = `✅ Спасибо за заявку!\n\nДля города ${city} мы рассчитаем точную стоимость в течение 2 часов.`;
+        
+        message += `\n\nРасчет будет выслан на ваш email или телефон.`;
+        
+        alert(message);
+        this.reset();
+        
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Получить расчёт бесплатно';
+      }, 1000);
     });
   </script>
 </body>
