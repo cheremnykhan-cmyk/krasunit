@@ -322,16 +322,16 @@
       <h2>Рассчитайте стоимость онлайн</h2>
       <div class="calc-box">
         <label>Длина (м)</label>
-        <input type="number" id="length" min="4" max="20" step="0.5" value="6" required>
-        <div class="hint">Рекомендуемый диапазон: от 4 до 20 метров</div>
+        <input type="number" id="length" min="4" max="120" step="0.5" value="6" required>
+        <div class="hint">Рекомендуемый диапазон: от 4 до 120 метров</div>
         
         <label>Ширина (м)</label>
-        <input type="number" id="width" min="4" max="12" step="0.5" value="6" required>
-        <div class="hint">Рекомендуемый диапазон: от 4 до 12 метров</div>
+        <input type="number" id="width" min="4" max="24" step="0.5" value="6" required>
+        <div class="hint">Рекомендуемый диапазон: от 4 до 24 метров</div>
         
         <label>Высота (м)</label>
-        <input type="number" id="height" min="2.5" max="8" step="0.5" value="4" required>
-        <div class="hint">Рекомендуемый диапазон: от 2.5 до 8 метров</div>
+        <input type="number" id="height" min="2.5" max="9" step="0.5" value="4" required>
+        <div class="hint">Рекомендуемый диапазон: от 2.5 до 9 метров</div>
         
         <label>Тип фундамента *</label>
         <select id="foundationType" required>
@@ -346,25 +346,25 @@
         <div id="lentochnyFields" class="foundation-section">
           <h3>Параметры ленточного фундамента</h3>
           <label>Периметр ленты (м)</label>
-          <input type="number" id="perimeter" min="10" max="100" step="0.5" value="24" required>
+          <input type="number" id="perimeter" min="10" max="300" step="0.5" value="24" required>
           
           <label>Высота ленты (м)</label>
-          <input type="number" id="foundationHeight" min="0.3" max="2" step="0.1" value="0.8" required>
+          <input type="number" id="foundationHeight" min="0.3" max="3" step="0.1" value="0.8" required>
           
           <label>Ширина ленты (м)</label>
-          <input type="number" id="foundationWidth" min="0.3" max="1" step="0.1" value="0.5" required>
+          <input type="number" id="foundationWidth" min="0.3" max="2" step="0.1" value="0.5" required>
         </div>
         
         <div id="plitaFields" class="foundation-section">
           <h3>Параметры монолитной плиты</h3>
           <label>Длина плиты (м)</label>
-          <input type="number" id="slabLength" min="4" max="20" step="0.5" value="6" required>
+          <input type="number" id="slabLength" min="4" max="120" step="0.5" value="6" required>
           
           <label>Ширина плиты (м)</label>
-          <input type="number" id="slabWidth" min="4" max="12" step="0.5" value="6" required>
+          <input type="number" id="slabWidth" min="4" max="24" step="0.5" value="6" required>
           
           <label>Высота плиты (м)</label>
-          <input type="number" id="slabHeight" min="0.2" max="0.5" step="0.05" value="0.3" required>
+          <input type="number" id="slabHeight" min="0.2" max="1" step="0.05" value="0.3" required>
         </div>
         
         <div id="requestFields" class="foundation-section">
@@ -458,21 +458,21 @@
       // Валидация полей
       let isValid = true;
       
-      if (!lengthInput.value || parseFloat(lengthInput.value) < 4 || parseFloat(lengthInput.value) > 20) {
+      if (!lengthInput.value || parseFloat(lengthInput.value) < 4 || parseFloat(lengthInput.value) > 120) {
         lengthInput.classList.add('input-error');
         isValid = false;
       } else {
         lengthInput.classList.remove('input-error');
       }
       
-      if (!widthInput.value || parseFloat(widthInput.value) < 4 || parseFloat(widthInput.value) > 12) {
+      if (!widthInput.value || parseFloat(widthInput.value) < 4 || parseFloat(widthInput.value) > 24) {
         widthInput.classList.add('input-error');
         isValid = false;
       } else {
         widthInput.classList.remove('input-error');
       }
       
-      if (!heightInput.value || parseFloat(heightInput.value) < 2.5 || parseFloat(heightInput.value) > 8) {
+      if (!heightInput.value || parseFloat(heightInput.value) < 2.5 || parseFloat(heightInput.value) > 9) {
         heightInput.classList.add('input-error');
         isValid = false;
       } else {
@@ -655,10 +655,10 @@
       // Отправка в телеграм
       try {
         const response = await fetch(`https://api.telegram.org/bot7958824238:AAGTyFNDncbhf_2BmJ7B30xt8BRog8MxPVw/sendMessage`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          chat_id: '1399740836',
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            chat_id: '1399740836',
             text: message
           })
         });
