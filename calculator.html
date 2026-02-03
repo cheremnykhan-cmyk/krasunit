@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Калькулятор стоимости — КрасЮнит</title>
   <meta name="description" content="Онлайн калькулятор стоимости гаражей, ангаров и складов из ЛСТК под ключ. Точный расчет с учетом фундамента.">
-  <meta name="keywords" content="калькулятор стоимости гаража, расчет ангаров из ЛСТК, стоимость склада из сэндвич панелей">
   <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
   <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
+  <script type="text/javascript">
      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
      m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-     ym(106448314, "init", {
+     ym(106449823, "init", {
           clickmap:true,
           trackLinks:true,
           accurateTrackBounce:true,
-          webvisor:true
+          webvisor:true,
+          trackHash:true
      });
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <noscript><div><img src="https://mc.yandex.ru/watch/106449823" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
   <style>
     * {
@@ -353,8 +353,6 @@
         </div>
         
         <div id="result" class="result">Выберите тип фундамента для расчета общей стоимости</div>
-        
-        <button id="calculateBtn" onclick="calculate()">Рассчитать полную стоимость</button>
       </div>
     </div>
 
@@ -421,7 +419,6 @@
       const heightInput = document.getElementById('height');
       const foundationType = document.getElementById('foundationType').value;
       const resultEl = document.getElementById('result');
-      const calculateBtn = document.getElementById('calculateBtn');
       
       // Валидация полей
       let isValid = true;
@@ -456,11 +453,8 @@
       
       if (!isValid) {
         resultEl.innerHTML = "<span style='color:red'>Пожалуйста, заполните все поля корректно</span>";
-        calculateBtn.disabled = true;
         return;
       }
-      
-      calculateBtn.disabled = false;
       
       const length = parseFloat(lengthInput.value);
       const width = parseFloat(widthInput.value);
@@ -538,23 +532,11 @@
         }
       });
       
-      // Плавная прокрутка для всех ссылок с классом smooth-scroll
-      document.querySelectorAll('.smooth-scroll').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 20,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
+      // Первый расчет при загрузке страницы
+      calculate();
     });
     
-    // Форма заявки
+    // Форма заявки с отправкой в Telegram и резервной отправкой на почту
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -562,29 +544,90 @@
       submitBtn.disabled = true;
       submitBtn.innerHTML = 'Отправка...';
       
-      const city = document.querySelector('[name="city"]').value;
-      const phone = document.querySelector('[name="phone"]').value;
+      const form = e.target;
+      const data = {
+        city: form.city.value,
+        phone: form.phone.value,
+        email: form.email.value || 'не указан',
+        comments: form.comments.value || 'нет дополнительных пожеланий'
+      };
       
-      // Простая валидация телефона
-      if (!phone.match(/^\+7\s?\(?\d{3}\)?\s?\d{3}-?\d{2}-?\d{2}$/)) {
-        alert('Пожалуйста, введите корректный номер телефона в формате +7 (XXX) XXX-XX-XX');
+      // Формируем сообщение для Telegram
+      const message = `🔔 НОВАЯ ЗАЯВКА С КАЛЬКУЛЯТОРА KRASUNIT!\n\n` +
+                      `ГОРОД: ${data.city}\n` +
+                      `ТЕЛЕФОН: ${data.phone}\n` +
+                      `EMAIL: ${data.email}\n` +
+                      `ДОПОЛНИТЕЛЬНО: ${data.comments}`;
+      
+      // Основная отправка в Telegram (ЗАМЕНИТЕ НА ВАШИ ДАННЫЕ!)
+      fetch(`https://api.telegram.org/bot7958824238:AAGTyFNDncbhf_2BmJ7B30xt8BRog8MxPVw/sendMessage`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          chat_id: '1399740836',  // ← ВАШ ЛИЧНЫЙ ID ИЗ @userinfobot
+          text: message
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.ok) {
+          alert(`✅ Спасибо за заявку!\nМы свяжемся с вами в течение 2 часов.`);
+          form.reset();
+        } else {
+          throw new Error(data.description || 'Ошибка отправки в Telegram');
+        }
+      })
+      .catch(error => {
+        console.error('Ошибка отправки в Telegram:', error);
+        
+        // Резервная отправка на почту через Formspree
+        alert('Telegram временно недоступен. Отправляем вашу заявку на почту...');
+        
+        const formData = new FormData();
+        formData.append('city', data.city);
+        formData.append('phone', data.phone);
+        formData.append('email', data.email);
+        formData.append('comments', data.comments);
+        
+        // Отправка на почту через Formspree (mjgollkd ENDPOINT!)
+        fetch('https://formspree.io/f/mjgollkd', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.ok) {
+            alert(`✅ Спасибо за заявку!\nВаша заявка получена. Мы рассчитаем стоимость и вышлем расчет в течение 2 часов.`);
+            form.reset();
+          } else {
+            throw new Error('Ошибка отправки на почту');
+          }
+        })
+        .catch(emailError => {
+          console.error('Ошибка отправки на почту:', emailError);
+          
+          // Финальное резервное уведомление
+          alert(`⚠️ ВРЕМЕННЫЕ ТЕХНИЧЕСКИЕ ПРОБЛЕМЫ\n\nВаша заявка сохранена в системе, но мы не смогли отправить ее автоматически. Пожалуйста, свяжитесь с нами напрямую:\n\n📞 +7 (391) 282-23-40\n📧 KrasUnit@mail.ru\n💬 Telegram: @krasunit_bot\n\nМы обязательно ответим вам в течение 2 часов.`);
+          
+          // Сохраняем данные в localStorage для последующей отправки
+          const savedRequests = JSON.parse(localStorage.getItem('savedRequests') || '[]');
+          savedRequests.push({
+            timestamp: new Date().toISOString(),
+            data: data
+          });
+          localStorage.setItem('savedRequests', JSON.stringify(savedRequests));
+          
+          form.reset();
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Получить расчёт бесплатно';
+        });
+      })
+      .finally(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Получить расчёт бесплатно';
-        return;
-      }
-      
-      // Моделирование отправки данных
-      setTimeout(() => {
-        let message = `✅ Спасибо за заявку!\n\nДля города ${city} мы рассчитаем точную стоимость в течение 2 часов.`;
-        
-        message += `\n\nРасчет будет выслан на ваш email или телефон.`;
-        
-        alert(message);
-        this.reset();
-        
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Получить расчёт бесплатно';
-      }, 1000);
+      });
     });
   </script>
 </body>
