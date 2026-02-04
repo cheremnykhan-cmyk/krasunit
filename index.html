@@ -32,7 +32,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body {
-      background-color: #f5f7fa;
+      background: #f9fbfd;
       color: #333;
       line-height: 1.6;
       padding: 20px;
@@ -40,263 +40,324 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      background: #ffffff;
+      padding: 45px;
+      border-radius: 14px;
+      box-shadow: 0 10px 45px rgba(0, 0, 0, 0.07);
+      position: relative;
+      overflow: hidden;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #2d2d2d 0%, #54a0ff 100%);
     }
     header {
       text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #2A52BE;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #eef2f7;
     }
     h1 {
-      font-size: 2.2rem;
-      color: #2A52BE;
-      margin-bottom: 15px;
+      font-size: 2.45rem;
+      color: #2d2d2d;
+      margin-bottom: 18px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      position: relative;
+      display: inline-block;
+    }
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #54a0ff;
+      border-radius: 2px;
     }
     .subtitle {
-      font-size: 1.3rem;
-      color: #555;
-      font-weight: 300;
-      margin-top: 10px;
+      font-size: 1.38rem;
+      color: #5a6c81;
+      font-weight: 400;
+      margin-top: 15px;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
     }
     h2 {
-      color: #2A52BE;
-      margin: 25px 0 15px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #eee;
-      font-size: 1.8rem;
+      color: #2d2d2d;
+      margin: 35px 0 25px;
+      padding-bottom: 12px;
+      font-size: 1.95rem;
+      font-weight: 600;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #54a0ff;
+      border-radius: 2px;
+    }
+    h3 {
+      color: #333;
+      margin: 25px 0 16px;
+      font-size: 1.45rem;
+      font-weight: 600;
     }
     .section {
-      margin-bottom: 30px;
-      padding: 20px;
-      background: #f9fbfd;
-      border-radius: 8px;
+      margin-bottom: 45px;
+      padding: 35px;
+      background: #fcfdff;
+      border-radius: 12px;
+      border: 1px solid #edf2f9;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #54a0ff;
+      border-radius: 12px 0 0 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .section:hover {
+      background: #f8fafd;
+      box-shadow: 0 5px 20px rgba(84, 160, 255, 0.12);
+      transform: translateY(-2px);
+    }
+    .section:hover::before {
+      opacity: 1;
     }
     .advantages-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      margin-top: 30px;
     }
     .advantage-card {
-      background: white;
-      border-radius: 10px;
-      padding: 25px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-      border-left: 4px solid #2A52BE;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid #edf2f9;
+      position: relative;
+      overflow: hidden;
+    }
+    .advantage-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #54a0ff;
     }
     .advantage-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(84, 160, 255, 0.22);
+      border-color: #dbe6f5;
+    }
+    .advantage-card:hover::before {
+      height: 6px;
     }
     .advantage-card h3 {
-      color: #2A52BE;
-      margin-bottom: 12px;
-      font-size: 1.3rem;
+      color: #2d2d2d;
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-left: 32px;
+    }
+    .advantage-card h3::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      background: #54a0ff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(84, 160, 255, 0.2);
     }
     .advantage-card p {
-      color: #444;
-      line-height: 1.6;
+      color: #555;
+      line-height: 1.75;
+      font-size: 1.08rem;
     }
     .advantage-card strong {
-      color: #2A52BE;
+      color: #2d2d2d;
       font-weight: 600;
     }
     .form-box {
-      background: #eef3ff;
-      padding: 25px;
-      border-radius: 10px;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
       margin-top: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+      border: 1px solid #edf2f9;
     }
     label {
       display: block;
       margin: 15px 0 8px;
-      font-weight: 500;
-      font-size: 1.05rem;
-      color: #2A52BE;
+      font-weight: 600;
+      font-size: 1.08rem;
+      color: #444;
     }
     input, select, textarea {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
+      padding: 14px;
+      border: 1px solid #dbe6f5;
+      border-radius: 8px;
       font-size: 16px;
-      transition: border-color 0.3s;
+      transition: all 0.3s;
     }
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: #2A52BE;
-      box-shadow: 0 0 0 2px rgba(42, 82, 190, 0.2);
+      border-color: #54a0ff;
+      box-shadow: 0 0 0 3px rgba(84, 160, 255, 0.15);
     }
     button {
-      background: #2A52BE;
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
       color: white;
       border: none;
-      padding: 14px 25px;
-      border-radius: 6px;
-      font-size: 16px;
+      padding: 16px 28px;
+      border-radius: 10px;
+      font-size: 1.12rem;
       cursor: pointer;
-      margin-top: 15px;
-      transition: all 0.3s;
+      margin-top: 20px;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: block;
       width: 100%;
-      font-weight: 500;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
     }
     button:hover {
-      background: #22439a;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .file-upload-container {
-      margin: 15px 0;
-      position: relative;
-    }
-    .file-upload-label {
-      display: block;
-      padding: 12px;
-      background: #f8f9fa;
-      border: 2px dashed #ddd;
-      border-radius: 8px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin-bottom: 10px;
-    }
-    .file-upload-label:hover {
-      border-color: #2A52BE;
-      background: #eef3ff;
-    }
-    .file-upload-label i {
-      font-size: 2rem;
-      color: #2A52BE;
-      margin-bottom: 8px;
-      display: block;
-    }
-    .file-upload-input {
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-    }
-    .file-list {
-      margin-top: 10px;
-      background: #f8f9fa;
-      padding: 10px;
-      border-radius: 6px;
-      max-height: 200px;
-      overflow-y: auto;
-    }
-    .file-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .file-item:last-child {
-      border-bottom: none;
-    }
-    .file-name {
-      color: #2A52BE;
-      font-weight: 500;
-    }
-    .file-remove {
-      color: #dc3545;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-    }
-    .allowed-types {
-      font-size: 0.85rem;
-      color: #666;
-      margin-top: 5px;
-      font-style: italic;
+      background: linear-gradient(135deg, #54a0ff 0%, #2d2d2d 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
     }
     .nav-links {
       display: flex;
-      gap: 15px;
-      margin: 20px 0;
+      gap: 18px;
+      margin: 35px 0;
       flex-wrap: wrap;
       justify-content: center;
     }
     .nav-link {
-      background: #2A52BE;
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
       color: white;
       text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 6px;
+      padding: 14px 32px;
+      border-radius: 10px;
       font-weight: 500;
       transition: all 0.3s;
       display: inline-block;
       text-align: center;
+      border: 1px solid #2d2d2d;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #54a0ff 0%, #2d2d2d 100%);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+      z-index: -1;
     }
     .nav-link:hover {
-      background: #22439a;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    .nav-link:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
     }
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 40px 0 0;
       color: #666;
-      margin-top: 30px;
-      border-top: 1px solid #eee;
-      font-size: 0.95rem;
+      margin-top: 55px;
+      border-top: 1px solid #edf2f9;
+      font-size: 0.98rem;
+      background: #fcfdff;
+      border-radius: 12px;
     }
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .advantages-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    footer a {
+      color: #54a0ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
     }
-    .advantages-grid > *:nth-child(7),
-    .advantages-grid > *:nth-child(8),
-    .advantages-grid > *:nth-child(9),
-    .advantages-grid > *:nth-child(10) {
-      margin-bottom: 0;
+    footer a:hover {
+      color: #2d2d2d;
+      text-decoration: underline;
     }
     @media (max-width: 768px) {
       .container {
-        padding: 15px;
+        padding: 30px 25px;
       }
       h1 {
-        font-size: 1.8rem;
+        font-size: 2.05rem;
       }
       .subtitle {
-        font-size: 1.1rem;
+        font-size: 1.22rem;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-link {
+        width: 100%;
+        max-width: 350px;
+        padding: 12px 25px;
       }
       .advantages-grid {
         grid-template-columns: 1fr;
       }
-      button {
-        padding: 12px;
-        font-size: 15px;
-      }
-      .nav-links {
-        flex-direction: column;
-        gap: 10px;
-      }
     }
     @media (max-width: 480px) {
       .container {
-        padding: 10px;
+        padding: 25px 20px;
       }
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.85rem;
       }
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
       }
-      input, select, textarea {
-        font-size: 18px;
-        padding: 14px;
+      .advantage-card {
+        padding: 25px;
+      }
+      button {
+        padding: 14px 22px;
+        font-size: 1.05rem;
       }
     }
   </style>
@@ -304,77 +365,77 @@
 <body>
   <div class="container">
     <header>
-      <div style="text-align: center; margin-bottom: 20px">
-        <img src="/krasunit/Logo.JPG" alt="КрасЮнит" style="max-height: 80px; max-width: 100%;">
+      <div style="text-align: center; margin-bottom: 25px">
+        <img src="/krasunit/Logo.JPG" alt="КрасЮнит" style="max-height: 90px; max-width: 100%;">
       </div>
       <h1>Гаражи, ангары и склады из ЛСТК под ключ по всей России</h1>
       <p class="subtitle">Сэндвич-панели, монтаж за 5 дней, экономия на фундаменте и отоплении</p>
     </header>
 
     <div class="nav-links">
-  <a href="/krasunit/projects.html" target="_blank" class="nav-link">Примеры работ</a>
-  <a href="/krasunit/construction.html" target="_blank" class="nav-link">Детали конструкции</a>
-  <a href="/krasunit/calculator.html" target="_blank" class="nav-link">Калькулятор стоимости</a>
-  <a href="/krasunit/about.html" class="nav-link">О компании</a>
-</div>
+      <a href="/krasunit/projects.html" target="_blank" class="nav-link">Примеры работ</a>
+      <a href="/krasunit/construction.html" target="_blank" class="nav-link">Детали конструкции</a>
+      <a href="/krasunit/calculator.html" target="_blank" class="nav-link">Калькулятор стоимости</a>
+      <a href="/krasunit/about.html" class="nav-link">О компании</a>
+    </div>
 
     <div class="section">
       <h2>Преимущества строительства из ЛСТК и сэндвич-панелей</h2>
-      <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px;">
+      <p style="font-size: 1.18rem; line-height: 1.8; margin-bottom: 30px; color: #555;">
         Легкие стальные тонкостенные конструкции (ЛСТК) в сочетании с сэндвич-панелями — это современное решение для быстрого и экономичного строительства. Вот почему сотни клиентов выбирают именно эту технологию:
       </p>
       
       <div class="advantages-grid">
         <div class="advantage-card">
-          <h3>🔥 Минимальные затраты на отопление</h3>
+          <h3>Минимальные затраты на отопление</h3>
           <p>Сэндвич-панели с теплоизоляцией 50-150 мм создают эффективный тепловой контур. <strong>Затраты на отопление снижаются на 30-40%</strong> по сравнению с кирпичными или бетонными зданиями. Даже при -40°C внутри поддерживается комфортная температура +15°C без дополнительного обогрева.</p>
         </div>
         
         <div class="advantage-card">
-          <h3>🏗️ Облегченные фундаменты</h3>
+          <h3>Облегченные фундаменты</h3>
           <p>Небольшой вес конструкций (в 3-5 раз легче кирпичных) позволяет использовать <strong>свайно-винтовые или столбчатые фундаменты</strong> вместо тяжелого ленточного или плитного. Это снижает стоимость фундамента на 40-60% и сокращает время устройства фундамента с недель до 1-2 дней.</p>
         </div>
         
         <div class="advantage-card">
-          <h3>⚡ Короткие сроки строительства</h3>
+          <h3>Короткие сроки строительства</h3>
           <p>Все конструкции изготавливаются на заводе с точностью до миллиметра. На объекте <strong>монтаж занимает 3-7 дней</strong> для объектов до 100 м² и 7-15 дней для крупных сооружений. Не нужно ждать набора прочности бетона или усадки стен — здание готово к эксплуатации сразу после монтажа.</p>
         </div>
         
         <div class="advantage-card">
-          <h3>💰 Низкая стоимость строительства</h3>
+          <h3>Низкая стоимость строительства</h3>
           <p>Технология ЛСТК позволяет <strong>снизить общую стоимость строительства на 25-35%</strong> по сравнению с традиционными методами. Экономия достигается за счет: минимизации земляных работ, отсутствия мокрых процессов, сокращения сроков (меньше расходы на аренду техники и оплату труда), использования недорогих облегченных фундаментов.</p>
         </div>
         
         <div class="advantage-card">
-          <h3>🎨 Эстетика внешнего и внутреннего вида</h3>
+          <h3>Эстетика внешнего и внутреннего вида</h3>
           <p>Сэндвич-панели имеют современное покрытие с защитным слоем, доступны в 15+ цветах. <strong>Внешний вид здания выглядит современно и презентабельно</strong> без дополнительной отделки. Внутренняя поверхность панелей гладкая и может использоваться как финишная — не требуется штукатурка и покраска. Любые архитектурные решения: от строгого промышленного до дизайнерского ангаров и гаражей.</p>
         </div>
         
         <div class="advantage-card">
-          <h3>🔧 Долговечность и надежность</h3>
+          <h3>Долговечность и надежность</h3>
           <p>ЛСТК конструкции не подвержены коррозии (за счет оцинковки), не горят, не гниют и не деформируются от влаги. <strong>Гарантийный срок эксплуатации — 25 лет</strong>, фактический — более 50 лет. Сэндвич-панели с минераловатным или пенополиуретановым утеплителем сохраняют свои свойства десятилетиями. Здания выдерживают снеговые и ветровые нагрузки даже в северных регионах.</p>
         </div>
         
         <div class="advantage-card">
-          <h3>🚚 Мобильность и переносимость</h3>
+          <h3>Мобильность и переносимость</h3>
           <p><strong>Ключевое преимущество ЛСТК:</strong> здание можно полностью разобрать и собрать на другом участке без потери качества и прочности конструкции. <strong>Сроки переноса:</strong> 3-5 дней для небольших объектов (гаражи, боксы) и 7-10 дней для крупных (ангары, склады).</p>
           <p><strong>Экономическая выгода:</strong> при смене места деятельности или продаже участка вы не теряете инвестиции в здание — его можно перевезти на новое место. <strong>Гарантия:</strong> все конструктивные элементы сохраняют свои свойства даже после 2-3 переносов.</p>
         </div>
         
         <div class="advantage-card">
-          <h3>🛡️ Стойкость к возгораниям от внешних воздействий</h3>
+          <h3>Стойкость к возгораниям от внешних воздействий</h3>
           <p><strong>Пожаробезопасность ЛСТК:</strong> стальные конструкции не горят и не поддерживают горение, что соответствует требованиям пожарной безопасности ФЗ-123. <strong>Сэндвич-панели</strong> с минераловатным утеплителем имеют предел огнестойкости до <strong>REI 45</strong> (45 минут сопротивления открытому огню).</p>
           <p><strong>Защита от внешних источников:</strong> здания устойчивы к искрам от сварочных работ, коротким замыканиям и другим внешним факторам. <strong>Экономическая выгода:</strong> снижение страховых взносов на 15-25% благодаря высокому классу пожарной безопасности. <strong>Гарантия:</strong> все конструкции проходят сертификацию в испытательных центрах МЧС России.</p>
         </div>
         
         <div class="advantage-card">
-          <h3>🧼 Отличные санитарно-гигиенические свойства</h3>
+          <h3>Отличные санитарно-гигиенические свойства</h3>
           <p><strong>Гладкие поверхности сэндвич-панелей</strong> не накапливают пыль, бактерии и грибок, что особенно важно для пищевых предприятий, складов готовой продукции и медицинских объектов. <strong>Легкость очистки:</strong> внутренние поверхности можно мыть моющими средствами без риска повреждения покрытия.</p>
           <p><strong>Гигиеничность:</strong> отсутствие щелей и стыков препятствует проникновению насекомых и грызунов. <strong>Сертификаты:</strong> материалы соответствуют санитарно-эпидемиологическим требованиям (СЭЗ) для использования в объектах пищевой промышленности и складах ГСМ. <strong>Экономия:</strong> снижение затрат на дезинфекцию и обслуживание по сравнению с традиционными зданиями.</p>
         </div>
         
         <div class="advantage-card">
-          <h3>♻️ Экологичность материалов</h3>
+          <h3>Экологичность материалов</h3>
           <p><strong>Сэндвич-панели</strong> изготавливаются из экологически чистых материалов, не выделяющих вредных веществ в процессе эксплуатации. <strong>Металлический каркас</strong> на 98% подлежит вторичной переработке в конце срока эксплуатации.</p>
           <p><strong>Энергоэффективность:</strong> использование материалов с низким углеродным следом при производстве. <strong>Соответствие стандартам:</strong> все материалы имеют сертификаты экологической безопасности для строительства жилых и общественных зданий.</p>
         </div>
@@ -395,20 +456,7 @@
           <input type="email" name="email" placeholder="Ваш email для отправки расчёта">
           
           <label>Дополнительные пожелания</label>
-          <textarea name="comments" rows="3" placeholder="Опишите ваши требования подробнее"></textarea>
-          
-          <div class="file-upload-container">
-            <label class="file-upload-label">
-              <i>📎</i>
-              <span>Перетащите файлы сюда или нажмите для выбора</span>
-              <p class="allowed-types">Разрешены: PDF, DWG (AutoCAD), CDW (Компас 3D), MCAD (MathCAD), JPG, PNG (до 20 МБ)</p>
-            </label>
-            <input type="file" class="file-upload-input" id="fileUpload" multiple 
-                   accept=".pdf,.dwg,.dxf,.cdw,.mcd,.jpg,.jpeg,.png,.bmp">
-            <div class="file-list" id="fileList">
-              <p class="no-files">Файлы не выбраны</p>
-            </div>
-          </div>
+          <textarea name="comments" rows="4" placeholder="Опишите ваши требования подробнее"></textarea>
           
           <button type="submit" id="submitBtn">Получить расчёт бесплатно</button>
         </form>
@@ -417,144 +465,19 @@
   </div>
 
   <footer>
-    <div class="container">
-      <p><strong>КрасЮнит</strong> — изготовление и продажа гаражей, боксов, ангаров, складов из ЛСТК<br>
-      Email: KrasUnit@mail.ru<br>
-      Телефон: +7 (391) 282-23-40<br>
-      ИНН: 2466296100<br>
-      Работаем по всей России</p>
-      <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+    <div class="container" style="background: transparent; box-shadow: none; padding: 0; margin: 0;">
+      <p><strong>КрасЮнит</strong> — изготовление и продажа гаражей, боксов, ангаров, складов из ЛСТК</p>
+      <p>Email: <a href="mailto:krasunit@mail.ru">krasunit@mail.ru</a><br>
+      Телефон: +7 (391) 282-23-40</p>
+      <p style="margin-top: 18px; color: #888;">
         © 2026 КрасЮнит. Все права защищены.
       </p>
     </div>
   </footer>
 
   <script>
-    // Управление загрузкой файлов
-    document.addEventListener('DOMContentLoaded', function() {
-      const fileInput = document.getElementById('fileUpload');
-      const fileList = document.getElementById('fileList');
-      
-      // Обработчик выбора файлов
-      fileInput.addEventListener('change', function(e) {
-        updateFileList(this.files);
-      });
-      
-      // Обработчик перетаскивания файлов
-      const dropArea = document.querySelector('.file-upload-label');
-      
-      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, preventDefaults, false);
-      });
-      
-      function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      
-      ['dragenter', 'dragover'].forEach(eventName => {
-        dropArea.addEventListener(eventName, highlight, false);
-      });
-      
-      ['dragleave', 'drop'].forEach(eventName => {
-        dropArea.addEventListener(eventName, unhighlight, false);
-      });
-      
-      function highlight() {
-        dropArea.style.borderColor = '#2A52BE';
-        dropArea.style.backgroundColor = '#e3ebff';
-      }
-      
-      function unhighlight() {
-        dropArea.style.borderColor = '#ddd';
-        dropArea.style.backgroundColor = '#f8f9fa';
-      }
-      
-      dropArea.addEventListener('drop', handleDrop, false);
-      
-      function handleDrop(e) {
-        const dt = e.dataTransfer;
-        const files = dt.files;
-        fileInput.files = files;
-        updateFileList(files);
-      }
-      
-      function updateFileList(files) {
-        fileList.innerHTML = '';
-        
-        if (files.length === 0) {
-          fileList.innerHTML = '<p class="no-files">Файлы не выбраны</p>';
-          return;
-        }
-        
-        // Ограничение: максимум 10 файлов
-        if (files.length > 10) {
-          alert('Можно загрузить максимум 10 файлов. Будут загружены первые 10.');
-        }
-        
-        // Проверка размера файлов (максимум 20 МБ каждый)
-        let validFiles = [];
-        for (let i = 0; i < Math.min(files.length, 10); i++) {
-          const file = files[i];
-          if (file.size > 20 * 1024 * 1024) {
-            alert(`Файл "${file.name}" превышает максимальный размер (20 МБ) и будет пропущен.`);
-          } else {
-            validFiles.push(file);
-          }
-        }
-        
-        if (validFiles.length === 0) {
-          fileList.innerHTML = '<p class="no-files">Все файлы превышают допустимый размер</p>';
-          return;
-        }
-        
-        validFiles.forEach((file, index) => {
-          const fileItem = document.createElement('div');
-          fileItem.className = 'file-item';
-          
-          const fileName = document.createElement('span');
-          fileName.className = 'file-name';
-          fileName.textContent = `${index + 1}. ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} МБ)`;
-          
-          const removeBtn = document.createElement('button');
-          removeBtn.className = 'file-remove';
-          removeBtn.innerHTML = '&times;';
-          removeBtn.title = 'Удалить файл';
-          removeBtn.addEventListener('click', function() {
-            removeFile(index);
-          });
-          
-          fileItem.appendChild(fileName);
-          fileItem.appendChild(removeBtn);
-          fileList.appendChild(fileItem);
-        });
-        
-        if (validFiles.length !== files.length) {
-          fileList.insertAdjacentHTML('beforeend', 
-            `<p style="color: #dc3545; font-size: 0.9rem; margin-top: 5px;">
-              Некоторые файлы были пропущены из-за превышения размера
-            </p>`
-          );
-        }
-      }
-      
-      function removeFile(index) {
-        const dt = new DataTransfer();
-        const inputFiles = Array.from(fileInput.files);
-        
-        inputFiles.forEach((file, i) => {
-          if (i !== index) {
-            dt.items.add(file);
-          }
-        });
-        
-        fileInput.files = dt.files;
-        updateFileList(fileInput.files);
-      }
-    });
-    
-    // Форма заявки с отправкой в Telegram и резервной отправкой на email
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    // Форма заявки с отправкой в телеграм
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const submitBtn = document.getElementById('submitBtn');
@@ -569,93 +492,39 @@
         comments: form.comments.value || 'нет дополнительных пожеланий'
       };
       
-      // Собираем информацию о файлах
-      const fileInput = document.getElementById('fileUpload');
-      let filesInfo = 'Файлы не прикреплены';
-      if (fileInput.files.length > 0) {
-        filesInfo = `Прикреплено файлов: ${fileInput.files.length}\n`;
-        for (let i = 0; i < fileInput.files.length; i++) {
-          filesInfo += `${i+1}. ${fileInput.files[i].name} (${(fileInput.files[i].size / 1024 / 1024).toFixed(1)} МБ)\n`;
-        }
-      }
-      
-      // Формируем сообщение для Telegram
-      const message = `🔔 НОВАЯ ЗАЯВКА С САЙТА KRASUNIT!\n\n` +
+      // Формируем сообщение для телеграм
+      const message = `🔔 НОВАЯ ЗАЯВКА С ГЛАВНОЙ СТРАНИЦЫ KRASUNIT!\n\n` +
                       `ГОРОД: ${data.city}\n` +
                       `ТЕЛЕФОН: ${data.phone}\n` +
                       `EMAIL: ${data.email}\n` +
-                      `ДОПОЛНИТЕЛЬНО: ${data.comments}\n\n` +
-                      `📎 ${filesInfo}`;
+                      `ДОПОЛНИТЕЛЬНО: ${data.comments}`;
       
-      // Основная отправка в Telegram (ЗДЕСЬ ВСТАВЛЯЕМ РЕАЛЬНЫЕ ДАННЫЕ)
-      fetch(`https://api.telegram.org/bot7958824238:AAGTyFNDncbhf_2BmJ7B30xt8BRog8MxPVw/sendMessage`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          chat_id: '1399740836',
-          text: message
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.ok) {
-          alert(`✅ Спасибо за заявку!\n\nДля города ${form.city.value} мы рассчитаем точную стоимость в течение 2 часов и вышлем детальный расчет на ваш телефон/email.`);
-          form.reset();
-          document.getElementById('fileList').innerHTML = '<p class="no-files">Файлы не выбраны</p>';
-        } else {
-          throw new Error('Ошибка отправки в Telegram');
-        }
-      })
-      .catch(error => {
-        console.error('Ошибка отправки в Telegram:', error);
-        
-        // Резервная отправка на email
-        alert('Telegram временно недоступен. Отправляем вашу заявку на email...');
-        
-        // Формируем данные для отправки на email
-        const emailMessage = {
-          name: data.city,
-          phone: data.phone,
-          email: data.email,
-          message: data.comments,
-          files: filesInfo
-        };
-        
-        // Отправка на email через Formspree (пример)
-        fetch('https://formspree.io/f/mqknqjvr', {
+      // Отправка в телеграм
+      try {
+        const response = await fetch(`https://api.telegram.org/bot7958824238:AAGTyFNDncbhf_2BmJ7B30xt8BRog8MxPVw/sendMessage`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(emailMessage)
-        })
-        .then(response => response.json())
-        .then(data => {
-          alert(`✅ Спасибо за заявку!\n\nВаша заявка получена. Мы рассчитаем стоимость для города ${form.city.value} и вышлем расчет в течение 2 часов.`);
-          form.reset();
-          document.getElementById('fileList').innerHTML = '<p class="no-files">Файлы не выбраны</p>';
-        })
-        .catch(emailError => {
-          console.error('Ошибка отправки на email:', emailError);
-          
-          // Финальное резервное уведомление
-          alert(`⚠️ ВРЕМЕННЫЕ ТЕХНИЧЕСКИЕ ПРОБЛЕМЫ\n\nВаша заявка сохранена в системе, но мы не смогли отправить ее автоматически. Пожалуйста, свяжитесь с нами напрямую:\n\n📞 +7 (391) 282-23-40\n📧 KrasUnit@mail.ru\n💬 Telegram: @krasunit_bot\n\nМы обязательно ответим вам в течение 2 часов.`);
-          
-          // Сохраняем данные в localStorage для последующей отправки
-          const savedRequests = JSON.parse(localStorage.getItem('savedRequests') || '[]');
-          savedRequests.push({
-            timestamp: new Date().toISOString(),
-            data: emailMessage
-          });
-          localStorage.setItem('savedRequests', JSON.stringify(savedRequests));
-        })
-        .finally(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Получить расчёт бесплатно';
+          body: JSON.stringify({
+            chat_id: '1399740836',
+            text: message
+          })
         });
-      })
-      .finally(() => {
+        
+        const result = await response.json();
+        
+        if (result.ok) {
+          alert(`✅ Спасибо за заявку!\nМы свяжемся с вами в течение 2 часов.`);
+          form.reset();
+        } else {
+          throw new Error(result.description || 'Ошибка отправки в телеграм');
+        }
+      } catch (error) {
+        console.error('Ошибка отправки в телеграм:', error);
+        alert(`❌ Ошибка отправки: ${error.message}\n\nПожалуйста, напишите нам напрямую:\n@krasunit_bot или +7 (391) 282-23-40`);
+      } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Получить расчёт бесплатно';
-      });
+      }
     });
   </script>
 </body>

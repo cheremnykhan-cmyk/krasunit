@@ -29,7 +29,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body {
-      background-color: #f5f7fa;
+      background: #f9fbfd;
       color: #333;
       line-height: 1.6;
       padding: 20px;
@@ -37,88 +37,186 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      background: #ffffff;
+      padding: 45px;
+      border-radius: 14px;
+      box-shadow: 0 10px 45px rgba(0, 0, 0, 0.07);
+      position: relative;
+      overflow: hidden;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #2d2d2d 0%, #54a0ff 100%);
     }
     header {
       text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #2A52BE;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #eef2f7;
     }
     h1 {
-      font-size: 2.2rem;
-      color: #2A52BE;
-      margin-bottom: 15px;
+      font-size: 2.45rem;
+      color: #2d2d2d;
+      margin-bottom: 18px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      position: relative;
+      display: inline-block;
+    }
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #54a0ff;
+      border-radius: 2px;
     }
     .subtitle {
-      font-size: 1.3rem;
-      color: #555;
-      font-weight: 300;
-      margin-top: 10px;
+      font-size: 1.38rem;
+      color: #5a6c81;
+      font-weight: 400;
+      margin-top: 15px;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
     }
     h2 {
-      color: #2A52BE;
-      margin: 25px 0 15px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #eee;
-      font-size: 1.8rem;
+      color: #2d2d2d;
+      margin: 35px 0 25px;
+      padding-bottom: 12px;
+      font-size: 1.95rem;
+      font-weight: 600;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #54a0ff;
+      border-radius: 2px;
     }
     h3 {
-      color: #2A52BE;
-      margin: 20px 0 12px;
-      font-size: 1.5rem;
+      color: #333;
+      margin: 25px 0 16px;
+      font-size: 1.45rem;
+      font-weight: 600;
     }
     .section {
-      margin-bottom: 30px;
-      padding: 20px;
-      background: #f9fbfd;
-      border-radius: 8px;
+      margin-bottom: 45px;
+      padding: 35px;
+      background: #fcfdff;
+      border-radius: 12px;
+      border: 1px solid #edf2f9;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #54a0ff;
+      border-radius: 12px 0 0 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .section:hover {
+      background: #f8fafd;
+      box-shadow: 0 5px 20px rgba(84, 160, 255, 0.12);
+      transform: translateY(-2px);
+    }
+    .section:hover::before {
+      opacity: 1;
     }
     .about-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      margin-top: 30px;
     }
     .about-card {
-      background: white;
-      border-radius: 10px;
-      padding: 25px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-      border-left: 4px solid #2A52BE;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid #edf2f9;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #54a0ff;
     }
     .about-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(84, 160, 255, 0.22);
+      border-color: #dbe6f5;
+    }
+    .about-card:hover::before {
+      height: 6px;
     }
     .about-card h3 {
-      color: #2A52BE;
-      margin-bottom: 12px;
-      font-size: 1.3rem;
+      color: #2d2d2d;
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-left: 32px;
+    }
+    .about-card h3::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      background: #54a0ff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(84, 160, 255, 0.2);
     }
     .about-card p {
-      color: #444;
-      line-height: 1.6;
+      color: #555;
+      line-height: 1.75;
+      font-size: 1.08rem;
     }
     .about-card strong {
-      color: #2A52BE;
+      color: #2d2d2d;
       font-weight: 600;
     }
     .requisites {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      margin-top: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      margin-top: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+      border: 1px solid #edf2f9;
     }
     .requisites-item {
-      margin-bottom: 15px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #eee;
+      margin-bottom: 22px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid #f0f5fa;
     }
     .requisites-item:last-child {
       border-bottom: none;
@@ -127,112 +225,400 @@
     }
     .requisites-label {
       font-weight: 600;
-      color: #2A52BE;
-      margin-bottom: 5px;
+      color: #444;
+      margin-bottom: 8px;
+      font-size: 1.08rem;
+      display: flex;
+      align-items: center;
+    }
+    .requisites-label::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #54a0ff;
+      border-radius: 50%;
+      margin-right: 12px;
     }
     .requisites-value {
-      color: #444;
-      line-height: 1.6;
+      color: #555;
+      line-height: 1.7;
+      font-size: 1.08rem;
+    }
+    .requisites-value a {
+      color: #54a0ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .requisites-value a:hover {
+      color: #2d2d2d;
+      text-decoration: underline;
     }
     .address-card {
-      background: #e7f3ff;
-      padding: 20px;
-      border-radius: 8px;
-      border-left: 4px solid #2196F3;
+      background: #f8fafd;
+      padding: 35px;
+      border-radius: 12px;
+      border: 1px solid #dbe6f5;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .address-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #54a0ff;
+    }
+    .address-card:hover {
+      background: #f0f5fc;
+      border-color: #c5d8f2;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(84, 160, 255, 0.15);
     }
     .address-card h4 {
-      color: #1565C0;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
+      color: #2d2d2d;
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    .address-card h4::before {
+      content: '📍';
+      margin-right: 14px;
+      font-size: 1.5rem;
+      color: #54a0ff;
     }
     .address-card p {
-      margin: 5px 0;
-      line-height: 1.6;
+      margin: 10px 0;
+      line-height: 1.8;
+      color: #555;
     }
     .address-card .phone {
-      font-weight: bold;
-      color: #2A52BE;
-      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2d2d2d;
+      font-size: 1.25rem;
+      margin: 14px 0;
+      display: block;
+    }
+    .address-card .phone::before {
+      content: '📞 ';
+      color: #54a0ff;
     }
     .sro-badge {
-      background: #e8f5e9;
-      border-left: 4px solid #4caf50;
-      padding: 15px;
-      border-radius: 6px;
-      margin-top: 15px;
+      background: #f0f7ff;
+      border-left: 4px solid #54a0ff;
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 30px;
+      border: 1px solid #dbe6f5;
+    }
+    .sro-badge h3 {
+      color: #2d2d2d;
+      margin-top: 0;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+    }
+    .sro-badge h3::before {
+      content: '✓';
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: #54a0ff;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      margin-right: 12px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 6px rgba(84, 160, 255, 0.3);
     }
     .nav-links {
       display: flex;
-      gap: 15px;
-      margin: 20px 0;
+      gap: 18px;
+      margin: 35px 0;
       flex-wrap: wrap;
       justify-content: center;
     }
     .nav-link {
-      background: #2A52BE;
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
       color: white;
       text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 6px;
+      padding: 14px 32px;
+      border-radius: 10px;
       font-weight: 500;
       transition: all 0.3s;
       display: inline-block;
       text-align: center;
+      border: 1px solid #2d2d2d;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #54a0ff 0%, #2d2d2d 100%);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+      z-index: -1;
     }
     .nav-link:hover {
-      background: #22439a;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    .nav-link:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
     }
     .back-link {
       display: inline-block;
-      margin: 20px 0;
-      color: #2A52BE;
+      margin: 28px 0;
+      color: #54a0ff;
       text-decoration: none;
       font-weight: 500;
-      padding: 8px 15px;
-      border: 1px solid #2A52BE;
-      border-radius: 6px;
+      padding: 11px 24px;
+      border: 1px solid #54a0ff;
+      border-radius: 8px;
       transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .back-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: #f0f7ff;
+      transition: width 0.3s;
+      z-index: -1;
     }
     .back-link:hover {
-      background: #2A52BE;
+      color: #2d2d2d;
+      background: #f0f7ff;
+      transform: translateX(4px);
+      border-color: #2d2d2d;
+    }
+    .back-link:hover::before {
+      width: 100%;
+    }
+    .contact-section {
+      background: linear-gradient(135deg, #f8fafd 0%, #fcfdff 100%);
+      border-radius: 14px;
+      padding: 50px;
+      text-align: center;
+      border: 1px solid #dbe6f5;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(84, 160, 255, 0.08) 0%, rgba(255,255,255,0) 70%);
+      z-index: 0;
+    }
+    .contact-section h2 {
+      margin-top: 0;
+      color: #2d2d2d;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 4px;
+      background: #54a0ff;
+      border-radius: 2px;
+      z-index: -1;
+    }
+    .contact-section p {
+      font-size: 1.35rem;
+      margin-bottom: 40px;
+      color: #555;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 22px;
+      max-width: 850px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-btn {
+      display: block;
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
       color: white;
+      padding: 18px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.15rem;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: center;
+      border: 2px solid #2d2d2d;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    }
+    .contact-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #54a0ff 0%, #2d2d2d 100%);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+      z-index: -1;
+    }
+    .contact-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    }
+    .contact-btn:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    .contact-btn.email {
+      background: linear-gradient(135deg, #f8fafd 0%, #edf2f9 100%);
+      color: #2d2d2d;
+      border-color: #dbe6f5;
+      box-shadow: 0 4px 12px rgba(84, 160, 255, 0.08);
+    }
+    .contact-btn.email::before {
+      background: linear-gradient(135deg, #54a0ff 0%, #dbe6f5 100%);
+    }
+    .contact-btn.email:hover {
+      border-color: #54a0ff;
+      box-shadow: 0 8px 25px rgba(84, 160, 255, 0.25);
+    }
+    .contact-btn.telegram {
+      background: linear-gradient(135deg, #f0f7ff 0%, #dbe6f5 100%);
+      color: #2d2d2d;
+      border-color: #c5d8f2;
+      box-shadow: 0 4px 12px rgba(84, 160, 255, 0.08);
+    }
+    .contact-btn.telegram::before {
+      background: linear-gradient(135deg, #54a0ff 0%, #81c7fa 100%);
+    }
+    .contact-btn.telegram:hover {
+      border-color: #54a0ff;
+      box-shadow: 0 8px 25px rgba(84, 160, 255, 0.25);
+    }
+    .russia-note {
+      margin-top: 40px;
+      color: #5a6c81;
+      font-size: 1.12rem;
+      font-style: italic;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.75;
+      position: relative;
+      z-index: 1;
     }
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 40px 0 0;
       color: #666;
-      margin-top: 30px;
-      border-top: 1px solid #eee;
-      font-size: 0.95rem;
+      margin-top: 55px;
+      border-top: 1px solid #edf2f9;
+      font-size: 0.98rem;
+      background: #fcfdff;
+      border-radius: 12px;
+    }
+    footer a {
+      color: #54a0ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    footer a:hover {
+      color: #2d2d2d;
+      text-decoration: underline;
     }
     @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
+      .container {
+        padding: 30px 25px;
       }
       h1 {
-        font-size: 1.8rem;
+        font-size: 2.05rem;
       }
       .subtitle {
-        font-size: 1.1rem;
+        font-size: 1.22rem;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-link {
+        width: 100%;
+        max-width: 350px;
+        padding: 12px 25px;
+      }
+      .contact-buttons {
+        grid-template-columns: 1fr;
+      }
+      .contact-section {
+        padding: 40px 25px;
+      }
+      .contact-section p {
+        font-size: 1.22rem;
+      }
+      .about-card, .requisites, .address-card {
+        padding: 25px;
       }
     }
     @media (max-width: 480px) {
       .container {
-        padding: 15px;
+        padding: 25px 20px;
       }
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.85rem;
       }
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
       }
-      .nav-links {
-        flex-direction: column;
+      .about-card, .requisites, .address-card {
+        padding: 22px;
+      }
+      .contact-btn {
+        padding: 16px 22px;
+        font-size: 1.1rem;
       }
       .nav-link {
-        width: 100%;
+        padding: 11px 22px;
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -240,8 +626,8 @@
 <body>
   <div class="container">
     <header>
-      <div style="text-align: center; margin-bottom: 20px">
-        <img src="/krasunit/Logo.JPG" alt="КрасЮнит" style="max-height: 80px; max-width: 100%;">
+      <div style="text-align: center; margin-bottom: 25px">
+        <img src="/krasunit/Logo.JPG" alt="КрасЮнит" style="max-height: 90px; max-width: 100%;">
       </div>
       <h1>О компании КрасЮнит</h1>
       <p class="subtitle">Строительство гаражей, ангаров и складов из ЛСТК под ключ по всей России</p>
@@ -256,177 +642,184 @@
     </div>
 
     <div class="section">
-      <h2>🌟 Почему выбирают нас?</h2>
-      <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px;">
+      <h2>Почему выбирают нас</h2>
+      <p style="font-size: 1.18rem; line-height: 1.8; margin-bottom: 30px; color: #555;">
         <strong>КрасЮнит</strong> — это команда профессионалов с многолетним опытом в строительстве зданий из легких стальных тонкостенных конструкций (ЛСТК). Мы взяли на себя всю сложную работу по поиску и отбору лучших поставщиков, чтобы предложить вам готовые решения по приемлемым и конкурентным ценам.
       </p>
       
       <div class="about-grid">
         <div class="about-card">
-          <h3>🔍 Мониторинг поставщиков</h3>
+          <h3>Мониторинг поставщиков</h3>
           <p>Мы тщательно отбираем и постоянно мониторим всех поставщиков сэндвич-панелей, окон, ворот, металлопроката и других материалов. Работаем только с проверенными производителями, которые доказали качество своей продукции на сотнях объектов.</p>
         </div>
         
         <div class="about-card">
-          <h3>🏭 Прямые контракты</h3>
+          <h3>Прямые контракты</h3>
           <p>Благодаря прямым контрактам с заводами-изготовителями мы получаем лучшие цены на материалы и передаем эту выгоду вам. Никаких посредников и лишних наценок — только честная цена от производителя.</p>
         </div>
         
         <div class="about-card">
-          <h3>✅ Гарантия качества</h3>
+          <h3>Гарантия качества</h3>
           <p>Все материалы и работы проходят строгий контроль качества. Мы используем только сертифицированную продукцию и предоставляем гарантию на все выполненные работы. Ваше доверие — наш главный приоритет.</p>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <h2>🎯 Наши услуги</h2>
+      <h2>Наши услуги</h2>
       
       <div class="about-grid">
         <div class="about-card">
-          <h3>📐 Проектирование под Ваши задачи</h3>
-          <p>Мы разрабатываем индивидуальные проекты с учетом ваших требований, назначения здания, климатических условий и типа грунта. Каждый проект проходит обязательную проверку на соответствие СНиП и ГОСТ, а также оптимизацию по стоимости и срокам строительства.</p>
+          <h3>Проектирование под ваши задачи</h3>
+          <p>Мы разрабатываем индивидуальные проекты с учетом ваших требований, назначения здания, климатических условий и типа грунта. Каждый проект проходит обязательную проверку на соответствие СНиП и ГОСТ.</p>
         </div>
         
         <div class="about-card">
-          <h3>🔧 Возможность шэф-монтажа</h3>
-          <p>Если у вас есть своя бригада монтажников, мы предоставим услугу шэф-монтажа: наш специалист приедет на объект, проконтролирует все этапы сборки, даст необходимые консультации и обеспечит правильное выполнение работ в соответствии с проектом.</p>
+          <h3>Шеф-монтаж</h3>
+          <p>Если у вас есть своя бригада монтажников, мы предоставим услугу шеф-монтажа: наш специалист приедет на объект, проконтролирует все этапы сборки и обеспечит правильное выполнение работ в соответствии с проектом.</p>
         </div>
         
         <div class="about-card">
-          <h3>📦 Полное сопровождение при заказе комплекта</h3>
-          <p>Вы можете заказать только комплект здания без монтажа. Мы обеспечим полное сопровождение: доставку материалов на объект, консультации по сборке, техническую поддержку на всех этапах монтажа. Даже без нашего монтажа вы получите качественное здание под ключ.</p>
+          <h3>Полное сопровождение комплекта</h3>
+          <p>Вы можете заказать только комплект здания без монтажа. Мы обеспечим полное сопровождение: доставку материалов на объект, консультации по сборке и техническую поддержку на всех этапах монтажа.</p>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <h2>📋 Наши реквизиты</h2>
+      <h2>Наши реквизиты</h2>
       
       <div class="requisites">
         <div class="requisites-item">
-          <div class="requisites-label">Полное наименование:</div>
+          <div class="requisites-label">Полное наименование</div>
           <div class="requisites-value">Общество с ограниченной ответственностью «КрасЮнит»</div>
         </div>
         
         <div class="requisites-item">
-          <div class="requisites-label">Сокращенное наименование:</div>
+          <div class="requisites-label">Сокращенное наименование</div>
           <div class="requisites-value">ООО «КрасЮнит»</div>
         </div>
         
         <div class="requisites-item">
-          <div class="requisites-label">ИНН:</div>
+          <div class="requisites-label">ИНН</div>
           <div class="requisites-value">2466296100</div>
         </div>
         
         <div class="requisites-item">
-          <div class="requisites-label">КПП:</div>
+          <div class="requisites-label">КПП</div>
           <div class="requisites-value">246201001</div>
         </div>
         
         <div class="requisites-item">
-          <div class="requisites-label">ОГРН:</div>
+          <div class="requisites-label">ОГРН</div>
           <div class="requisites-value">1232400018322</div>
         </div>
         
         <div class="requisites-item">
-          <div class="requisites-label">Юридический адрес:</div>
+          <div class="requisites-label">Юридический адрес</div>
           <div class="requisites-value">660017, Красноярский край, г. Красноярск, ул. Рейдовая, д. 68Д, пом. 317</div>
         </div>
-       
-            
+        
         <div class="requisites-item">
-          <div class="requisites-label">Генеральный директор:</div>
+          <div class="requisites-label">Расчетный счет</div>
+          <div class="requisites-value">40702810723590006341</div>
+        </div>
+        
+        <div class="requisites-item">
+          <div class="requisites-label">Банк</div>
+          <div class="requisites-value">Филиал «Новосибирский» АО «Альфа-Банк», г. Новосибирск</div>
+        </div>
+        
+        <div class="requisites-item">
+          <div class="requisites-label">Корреспондентский счет</div>
+          <div class="requisites-value">30101810600000000774</div>
+        </div>
+        
+        <div class="requisites-item">
+          <div class="requisites-label">БИК</div>
+          <div class="requisites-value">045004774</div>
+        </div>
+        
+        <div class="requisites-item">
+          <div class="requisites-label">Генеральный директор</div>
           <div class="requisites-value">Черемных Александр Николаевич</div>
         </div>
         
         <div class="requisites-item">
-          <div class="requisites-label">Email:</div>
-          <div class="requisites-value"><a href="mailto:krasunit@mail.ru" style="color: #2A52BE;">krasunit@mail.ru</a></div>
+          <div class="requisites-label">Email</div>
+          <div class="requisites-value"><a href="mailto:krasunit@mail.ru">krasunit@mail.ru</a></div>
         </div>
         
         <div class="requisites-item">
-          <div class="requisites-label">Телефон:</div>
+          <div class="requisites-label">Телефон</div>
           <div class="requisites-value">+7 (391) 282-23-40</div>
         </div>
       </div>
       
       <div class="sro-badge">
-        <h3 style="color: #2e7d32; margin-top: 0;">✅ Членство в СРО</h3>
-        <p style="margin: 0; line-height: 1.6;">
+        <h3>Членство в СРО</h3>
+        <p style="margin: 0; line-height: 1.75; color: #555;">
           <strong>СРО-С-117-17122009</strong>, рег. №1737 — мы являемся членом саморегулируемой организации в области строительства, что подтверждает нашу квалификацию и надежность.
         </p>
       </div>
     </div>
 
     <div class="section">
-      <h2>📍 Наши адреса</h2>
+      <h2>Наши адреса</h2>
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 20px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; margin-top: 30px;">
         <div class="address-card">
-          <h4>🏢 Юридический адрес / Офис</h4>
+          <h4>Юридический адрес / Офис</h4>
           <p><strong>Адрес:</strong> 660017, Красноярский край, г. Красноярск, ул. Рейдовая, д. 68Д, пом. 317</p>
-          <p><strong>Телефон:</strong> <span class="phone">+7 (391) 282-23-40</span></p>
-          <p><strong>Email:</strong> <a href="mailto:krasunit@mail.ru" style="color: #2A52BE;">krasunit@mail.ru</a></p>
+          <span class="phone">+7 (391) 282-23-40</span>
+          <p><strong>Email:</strong> <a href="mailto:krasunit@mail.ru" style="color: #54a0ff; text-decoration: none;">krasunit@mail.ru</a></p>
         </div>
         
         <div class="address-card">
-          <h4>🏭 Выставочный комплекс</h4>
-          <p><strong>Адрес:</strong> г. Красноярск, ул. Академика Вавилова,1 стр.39 </p>
-          <p><strong>Телефон:</strong> <span class="phone">+7 (391) 282-23-40</span></p>
+          <h4>Выставочный комплекс</h4>
+          <p><strong>Адрес:</strong> г. Красноярск, ул. Северное Шоссе, д. 5Г, стр. 1</p>
+          <span class="phone">+7 (391) 282-23-40</span>
           <p><strong>Режим работы:</strong> Пн-Вс: 10:00 - 20:00</p>
           <p><strong>Что можно увидеть:</strong> Образцы материалов, готовые конструкции, 3D-визуализации</p>
         </div>
       </div>
-      
-      <div style="margin-top: 25px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-        <h3>🗺️ Как нас найти:</h3>
-        <p style="line-height: 1.6;">
-          <strong>Юридический адрес:</strong> 660017, Красноярский край, г. Красноярск, ул. Рейдовая, д. 68Д, пом. 317<br><br>
-          <strong>Выставочный комплекс:</strong> г. Красноярск, ул. Академика Вавилова,1 стр.39, вывеска "КрасЮнит".
-        </p>
-      </div>
     </div>
 
-    <div class="section">
-      <h2>💬 Свяжитесь с нами</h2>
+    <div class="contact-section">
+      <h2>Свяжитесь с нами</h2>
+      <p>
+        Готовы начать строительство?<br>
+        Оставьте заявку, и наш менеджер свяжется с вами в течение 2 часов!
+      </p>
       
-      <div style="text-align: center; padding: 30px; background: #eef3ff; border-radius: 10px;">
-        <p style="font-size: 1.2rem; margin-bottom: 15px;">
-          Готовы начать строительство? Оставьте заявку, и наш менеджер свяжется с вами в течение 2 часов!
-        </p>
+      <div class="contact-buttons">
+        <a href="tel:+73912822340" class="contact-btn">
+          📞 +7 (391) 282-23-40
+        </a>
         
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-          <a href="tel:+73912822340" style="display: inline-block; background: #2A52BE; color: white; padding: 12px 30px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: all 0.3s;">
-            📞 Позвонить: +7 (391) 282-23-40
-          </a>
-          
-          <a href="mailto:krasunit@mail.ru" style="display: inline-block; background: #dc3545; color: white; padding: 12px 30px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: all 0.3s;">
-            ✉️ Написать на почту
-          </a>
-          
-          <a href="https://t.me/krasunit_bot" target="_blank" style="display: inline-block; background: #0088cc; color: white; padding: 12px 30px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: all 0.3s;">
-            💬 Написать в телеграм
-          </a>
-        </div>
+        <a href="mailto:krasunit@mail.ru" class="contact-btn email">
+          ✉️ krasunit@mail.ru
+        </a>
         
-        <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
-          Мы работаем по всей России. Возможна отправка материалов и выезд специалистов в любой регион.
-        </p>
+        <a href="https://t.me/krasunit_bot" target="_blank" class="contact-btn telegram">
+          💬 Написать в телеграм
+        </a>
       </div>
+      
+      <p class="russia-note">
+        <strong>Мы работаем по всей России.</strong><br>
+        Возможна отправка материалов и выезд специалистов в любой регион.
+      </p>
     </div>
   </div>
 
   <footer>
-    <div class="container">
-      <p><strong>КрасЮнит</strong> — изготовление и продажа гаражей, боксов, ангаров, складов из ЛСТК<br>
-      Email: krasunit@mail.ru<br>
-      Телефон: +7 (391) 282-23-40<br>
-      Работаем по всей России</p>
-      <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
-        © 2026 КрасЮнит. Все права защищены.
-      </p>
-    </div>
+    <p><strong>КрасЮнит</strong> — изготовление и продажа гаражей, боксов, ангаров, складов из ЛСТК</p>
+    <p>Email: <a href="mailto:krasunit@mail.ru">krasunit@mail.ru</a><br>
+    Телефон: +7 (391) 282-23-40</p>
+    <p style="margin-top: 18px; color: #888;">
+      © 2026 КрасЮнит. Все права защищены.
+    </p>
   </footer>
 </body>
 </html>

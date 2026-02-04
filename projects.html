@@ -1,22 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106449823', 'ym');
-
-    ym(106449823, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/106449823" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +7,7 @@
   <meta name="description" content="Реализованные проекты компании КрасЮнит: гаражи, ангары, склады, овощехранилища из ЛСТК под ключ по всей России.">
   <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
   <style>
+    /* Скопируйте тот же стиль, что и в главной странице */
     * {
       margin: 0;
       padding: 0;
@@ -31,7 +15,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body {
-      background-color: #f5f7fa;
+      background: #f9fbfd;
       color: #333;
       line-height: 1.6;
       padding: 20px;
@@ -39,113 +23,261 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      background: #ffffff;
+      padding: 45px;
+      border-radius: 14px;
+      box-shadow: 0 10px 45px rgba(0, 0, 0, 0.07);
+      position: relative;
+      overflow: hidden;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #2d2d2d 0%, #54a0ff 100%);
     }
     header {
       text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #2A52BE;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #eef2f7;
     }
     h1 {
-      font-size: 2.2rem;
-      color: #2A52BE;
-      margin-bottom: 15px;
+      font-size: 2.45rem;
+      color: #2d2d2d;
+      margin-bottom: 18px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      position: relative;
+      display: inline-block;
+    }
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #54a0ff;
+      border-radius: 2px;
     }
     .subtitle {
-      font-size: 1.3rem;
-      color: #555;
-      font-weight: 300;
-      margin-top: 10px;
+      font-size: 1.38rem;
+      color: #5a6c81;
+      font-weight: 400;
+      margin-top: 15px;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
     }
     h2 {
-      color: #2A52BE;
-      margin: 25px 0 15px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #eee;
-      font-size: 1.8rem;
+      color: #2d2d2d;
+      margin: 35px 0 25px;
+      padding-bottom: 12px;
+      font-size: 1.95rem;
+      font-weight: 600;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #54a0ff;
+      border-radius: 2px;
     }
     .section {
-      margin-bottom: 30px;
-      padding: 20px;
-      background: #f9fbfd;
-      border-radius: 8px;
+      margin-bottom: 45px;
+      padding: 35px;
+      background: #fcfdff;
+      border-radius: 12px;
+      border: 1px solid #edf2f9;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: #54a0ff;
+      border-radius: 12px 0 0 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .section:hover {
+      background: #f8fafd;
+      box-shadow: 0 5px 20px rgba(84, 160, 255, 0.12);
+      transform: translateY(-2px);
+    }
+    .section:hover::before {
+      opacity: 1;
     }
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 25px;
     }
     .project-card {
       background: white;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+      border: 1px solid #edf2f9;
     }
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(84, 160, 255, 0.22);
+      border-color: #dbe6f5;
     }
     .project-card img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: cover;
       display: block;
     }
     .project-card h3 {
-      padding: 15px 15px 5px;
-      color: #2A52BE;
+      padding: 20px 20px 10px;
+      color: #2d2d2d;
       margin: 0;
-      font-size: 1.2rem;
+      font-size: 1.35rem;
     }
     .project-card p {
-      padding: 0 15px 15px;
+      padding: 0 20px 20px;
       margin: 0;
-      color: #444;
-      font-size: 0.95rem;
-      line-height: 1.5;
+      color: #555;
+      font-size: 1.02rem;
+      line-height: 1.7;
     }
     .project-card p strong {
-      color: #2A52BE;
+      color: #2d2d2d;
       font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      margin: 35px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav-link {
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+      color: white;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 500;
+      transition: all 0.3s;
+      display: inline-block;
+      text-align: center;
+      border: 1px solid #2d2d2d;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #54a0ff 0%, #2d2d2d 100%);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+      z-index: -1;
+    }
+    .nav-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    .nav-link:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
     }
     .back-link {
       display: inline-block;
-      margin: 20px 0;
-      color: #2A52BE;
+      margin: 28px 0;
+      color: #54a0ff;
       text-decoration: none;
       font-weight: 500;
-      padding: 8px 15px;
-      border: 1px solid #2A52BE;
-      border-radius: 6px;
+      padding: 11px 24px;
+      border: 1px solid #54a0ff;
+      border-radius: 8px;
       transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .back-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: #f0f7ff;
+      transition: width 0.3s;
+      z-index: -1;
     }
     .back-link:hover {
-      background: #2A52BE;
-      color: white;
+      color: #2d2d2d;
+      background: #f0f7ff;
+      transform: translateX(4px);
+      border-color: #2d2d2d;
+    }
+    .back-link:hover::before {
+      width: 100%;
     }
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 40px 0 0;
       color: #666;
-      margin-top: 30px;
-      border-top: 1px solid #eee;
-      font-size: 0.95rem;
+      margin-top: 55px;
+      border-top: 1px solid #edf2f9;
+      font-size: 0.98rem;
+      background: #fcfdff;
+      border-radius: 12px;
+    }
+    footer a {
+      color: #54a0ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    footer a:hover {
+      color: #2d2d2d;
+      text-decoration: underline;
     }
     @media (max-width: 768px) {
       .container {
-        padding: 15px;
+        padding: 30px 25px;
       }
       h1 {
-        font-size: 1.8rem;
+        font-size: 2.05rem;
       }
       .subtitle {
-        font-size: 1.1rem;
+        font-size: 1.22rem;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-link {
+        width: 100%;
+        max-width: 350px;
+        padding: 12px 25px;
       }
       .projects-grid {
         grid-template-columns: 1fr;
@@ -153,16 +285,16 @@
     }
     @media (max-width: 480px) {
       .container {
-        padding: 10px;
+        padding: 25px 20px;
       }
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.85rem;
       }
       h2 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
       }
       .project-card img {
-        height: 160px;
+        height: 180px;
       }
     }
   </style>
@@ -170,14 +302,21 @@
 <body>
   <div class="container">
     <header>
-      <div style="text-align: center; margin-bottom: 20px">
-        <img src="/krasunit/Logo.JPG" alt="КрасЮнит" style="max-height: 80px; max-width: 100%;">
+      <div style="text-align: center; margin-bottom: 25px">
+        <img src="/krasunit/Logo.JPG" alt="КрасЮнит" style="max-height: 90px; max-width: 100%;">
       </div>
       <h1>Наши реализованные проекты</h1>
       <p class="subtitle">Гаражи, ангары, склады и овощехранилища из ЛСТК по всей России</p>
     </header>
 
     <a href="/krasunit/" class="back-link">← Вернуться на главную страницу</a>
+
+    <div class="nav-links">
+      <a href="/krasunit/" class="nav-link">Главная страница</a>
+      <a href="/krasunit/construction.html" target="_blank" class="nav-link">Детали конструкции</a>
+      <a href="/krasunit/calculator.html" target="_blank" class="nav-link">Калькулятор стоимости</a>
+      <a href="/krasunit/about.html" class="nav-link">О компании</a>
+    </div>
 
     <div class="section">
       <div class="projects-grid">
@@ -186,68 +325,46 @@
           <h3>Овощехранилище 24×54 м</h3>
           <p><strong>Место:</strong> Красноярский край<br>
           <strong>Особенности:</strong> Система вентиляции и климат-контроля, сэндвич-панели 150 мм<br>
-          <strong>Сроки:</strong> 18 дней монтажа<br>
-          <strong>Экономия:</strong> на 35% дешевле кирпичного аналога</p>
+          <strong>Сроки:</strong> 18 дней монтажа</p>
         </div>
         
         <div class="project-card">
           <img src="/krasunit/projects/garazh-sh-tehniki.jpg" alt="Гараж для сельхозтехники 24×48 м">
           <h3>Гараж для С/Х техники 24×48 м</h3>
           <p><strong>Место:</strong> Новосибирская область<br>
-          <strong>Особенности:</strong> Высота 6 м, усиленные конструкции для тяжелой техники<br>
-          <strong>Сроки:</strong> 15 дней монтажа<br>
-          <strong>Экономия:</strong> на 40% дешевле бетонного варианта</p>
+          <strong>Особенности:</strong> Высота 6 м, усиленные конструкции для тяжелой техники</p>
         </div>
         
         <div class="project-card">
           <img src="/krasunit/projects/sklad.jpg" alt="Склад 24×58 м">
           <h3>Склад 24×58 м</h3>
-          <p><strong>Место:</strong> Иркутская область<br>
-          <strong>Особенности:</strong> Монолитный фундамент, система пожаротушения, ворота для фур<br>
-          <strong>Сроки:</strong> 21 день монтажа<br>
-          <strong>Экономия:</strong> на 30% ниже стоимости кирпичного склада</p>
+          <p><strong>Место:</strong> Иркутская область</p>
         </div>
         
         <div class="project-card">
           <img src="/krasunit/projects/boks.jpg" alt="Автобокс 9×18 м">
           <h3>Автобокс 9×18 м</h3>
-          <p><strong>Место:</strong> Кемеровская область<br>
-          <strong>Особенности:</strong> Теплоизоляция 100 мм, автоматические ворота, система отопления<br>
-          <strong>Сроки:</strong> 6 дней монтажа<br>
-          <strong>Экономия:</strong> на 45% дешевле традиционного строительства</p>
+          <p><strong>Место:</strong> Кемеровская область</p>
         </div>
         
         <div class="project-card">
           <img src="/krasunit/projects/ellling.jpg" alt="Эллинг 6×12 м">
           <h3>Эллинг 6×12 м</h3>
-          <p><strong>Место:</strong> Усть-Илимская ГЭС<br>
-          <strong>Особенности:</strong> Водонепроницаемое покрытие, система осушения, стапель для катеров<br>
-          <strong>Сроки:</strong> 15 дней монтажа<br>
-          <strong>Экономия:</strong> на 50% ниже стоимости капитального строения</p>
+          <p><strong>Место:</strong> Республика Хакасия</p>
         </div>
-     
-<div class="project-card">
-  <img src="/krasunit/projects/garazh-avtobusov.jpg" alt="Гараж для автобусов 18×30 м">
-  <h3>Гараж для автобусов 18×30 м</h3>
-  <p><strong>Статус:</strong> Сейчас в работе 🚧<br>
-  <strong>Особенности:</strong> Специализированное помещение для хранения и обслуживания автобусов<br>
-  <strong>Этап:</strong> Монтаж ЛСТК-каркаса<br>
-  <strong>Сроки:</strong> Ожидаем завершения через 10 дней</p>
-</div>
- </div>
-      <p style="text-align: center; margin-top: 25px; font-style: italic; color: #2A52BE; font-weight: 500; font-size: 1.1rem;">
+      </div>
+      <p style="text-align: center; margin-top: 30px; font-style: italic; color: #5a6c81; font-weight: 500; font-size: 1.15rem;">
         Все объекты построены из ЛСТК с гарантией 10 лет. Возможна разработка индивидуального проекта под ваши задачи.
       </p>
     </div>
   </div>
 
   <footer>
-    <div class="container">
-      <p><strong>КрасЮнит</strong> — изготовление и продажа гаражей, боксов, ангаров, складов из ЛСТК<br>
-      Email: KrasUnit@mail.ru<br>
-      Телефон: +7 (391) 282-23-40<br>
-      Работаем по всей России</p>
-      <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">
+    <div class="container" style="background: transparent; box-shadow: none; padding: 0; margin: 0;">
+      <p><strong>КрасЮнит</strong> — изготовление и продажа гаражей, боксов, ангаров, складов из ЛСТК</p>
+      <p>Email: <a href="mailto:krasunit@mail.ru">krasunit@mail.ru</a><br>
+      Телефон: +7 (391) 282-23-40</p>
+      <p style="margin-top: 18px; color: #888;">
         © 2026 КрасЮнит. Все права защищены.
       </p>
     </div>
