@@ -58,6 +58,32 @@
       margin-bottom: 40px;
       padding-bottom: 30px;
       border-bottom: 1px solid #eef2f7;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Градиентный фон для верхнего блока */
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 30%, #54a0ff 70%, #2d2d2d 100%);
+      opacity: 0.08;
+      z-index: 0;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, #2d2d2d 0%, #54a0ff 100%);
+      border-radius: 2px;
+      z-index: 1;
     }
     h1 {
       font-size: 2.45rem;
@@ -67,6 +93,7 @@
       letter-spacing: -0.5px;
       position: relative;
       display: inline-block;
+      z-index: 2;
     }
     h1::after {
       content: '';
@@ -78,6 +105,7 @@
       height: 4px;
       background: #54a0ff;
       border-radius: 2px;
+      z-index: -1;
     }
     .subtitle {
       font-size: 1.38rem;
@@ -88,6 +116,8 @@
       margin-left: auto;
       margin-right: auto;
       line-height: 1.65;
+      position: relative;
+      z-index: 2;
     }
     h2 {
       color: #2d2d2d;
@@ -626,7 +656,7 @@
 <body>
   <div class="container">
     <header>
-      <div style="text-align: center; margin-bottom: 25px">
+      <div style="text-align: center; margin-bottom: 25px; position: relative; z-index: 2;">
         <img src="/krasunit/Logo.JPG" alt="КрасЮнит" style="max-height: 90px; max-width: 100%;">
       </div>
       <h1>О компании КрасЮнит</h1>
