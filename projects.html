@@ -6,8 +6,22 @@
   <title>Наши проекты — КрасЮнит</title>
   <meta name="description" content="Реализованные проекты компании КрасЮнит: гаражи, ангары, склады, овощехранилища из ЛСТК под ключ по всей России.">
   <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+     ym(106449823, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true,
+          trackHash:true
+     });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/106449823" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
   <style>
-    /* Скопируйте тот же стиль, что и в главной странице */
     * {
       margin: 0;
       padding: 0;
@@ -21,7 +35,7 @@
       padding: 20px;
     }
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       background: #ffffff;
       padding: 45px;
@@ -93,6 +107,12 @@
       background: #54a0ff;
       border-radius: 2px;
     }
+    h3 {
+      color: #333;
+      margin: 25px 0 16px;
+      font-size: 1.45rem;
+      font-weight: 600;
+    }
     .section {
       margin-bottom: 45px;
       padding: 35px;
@@ -122,47 +142,173 @@
     .section:hover::before {
       opacity: 1;
     }
-    .projects-grid {
+    .gallery-tabs {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tab-btn {
+      padding: 10px 25px;
+      background: #edf2f9;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #5a6c81;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: linear-gradient(135deg, #54a0ff 0%, #2d2d2d 100%);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(84, 160, 255, 0.25);
+    }
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
       margin-top: 25px;
     }
     .project-card {
       background: white;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
       border: 1px solid #edf2f9;
     }
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(84, 160, 255, 0.22);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(84, 160, 255, 0.3);
       border-color: #dbe6f5;
     }
-    .project-card img {
+    .project-image {
       width: 100%;
-      height: 220px;
+      height: 240px;
       object-fit: cover;
       display: block;
+      transition: transform 0.5s ease;
+    }
+    .project-card:hover .project-image {
+      transform: scale(1.08);
+    }
+    .project-content {
+      padding: 28px;
     }
     .project-card h3 {
-      padding: 20px 20px 10px;
       color: #2d2d2d;
-      margin: 0;
-      font-size: 1.35rem;
+      margin-bottom: 14px;
+      font-size: 1.45rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .project-card h3::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: #54a0ff;
+      border-radius: 50%;
+      margin-right: 14px;
+      flex-shrink: 0;
     }
     .project-card p {
-      padding: 0 20px 20px;
-      margin: 0;
       color: #555;
-      font-size: 1.02rem;
-      line-height: 1.7;
+      line-height: 1.75;
+      font-size: 1.05rem;
+      margin-bottom: 18px;
     }
-    .project-card p strong {
+    .project-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .feature {
+      background: #f0f7ff;
       color: #2d2d2d;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+    .emotion-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      color: #8b4513;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
       font-weight: 600;
+      margin-top: 12px;
+      letter-spacing: 0.5px;
+    }
+    .price-tag {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #2d2d2d;
+      margin: 18px 0 10px;
+      display: block;
+    }
+    .price-tag small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #666;
+      display: block;
+      margin-top: 5px;
+    }
+    .discount-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+      color: white;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-left: 8px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .back-link {
+      display: inline-block;
+      margin: 28px 0;
+      color: #54a0ff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 11px 24px;
+      border: 1px solid #54a0ff;
+      border-radius: 8px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .back-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: #f0f7ff;
+      transition: width 0.3s;
+      z-index: -1;
+    }
+    .back-link:hover {
+      color: #2d2d2d;
+      background: #f0f7ff;
+      transform: translateX(4px);
+      border-color: #2d2d2d;
+    }
+    .back-link:hover::before {
+      width: 100%;
     }
     .nav-links {
       display: flex;
@@ -207,39 +353,6 @@
       transform: scaleX(1);
       transform-origin: left;
     }
-    .back-link {
-      display: inline-block;
-      margin: 28px 0;
-      color: #54a0ff;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 11px 24px;
-      border: 1px solid #54a0ff;
-      border-radius: 8px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .back-link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background: #f0f7ff;
-      transition: width 0.3s;
-      z-index: -1;
-    }
-    .back-link:hover {
-      color: #2d2d2d;
-      background: #f0f7ff;
-      transform: translateX(4px);
-      border-color: #2d2d2d;
-    }
-    .back-link:hover::before {
-      width: 100%;
-    }
     footer {
       text-align: center;
       padding: 40px 0 0;
@@ -279,8 +392,19 @@
         max-width: 350px;
         padding: 12px 25px;
       }
-      .projects-grid {
+      .gallery-tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+      .tab-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      .gallery-grid {
         grid-template-columns: 1fr;
+      }
+      .project-image {
+        height: 200px;
       }
     }
     @media (max-width: 480px) {
@@ -293,8 +417,17 @@
       h2 {
         font-size: 1.75rem;
       }
-      .project-card img {
-        height: 180px;
+      .project-content {
+        padding: 22px;
+      }
+      .project-card h3 {
+        font-size: 1.35rem;
+      }
+      .project-card p {
+        font-size: 1rem;
+      }
+      .price-tag {
+        font-size: 1.35rem;
       }
     }
   </style>
@@ -312,51 +445,187 @@
     <a href="/krasunit/" class="back-link">← Вернуться на главную страницу</a>
 
     <div class="nav-links">
-  <a href="/krasunit/" class="nav-link">Главная страница</a>
-  <a href="/krasunit/garages.html" class="nav-link">Каталог гаражей</a>
-  <a href="/krasunit/construction.html" target="_blank" class="nav-link">Детали конструкции</a>
-  <a href="/krasunit/calculator.html" target="_blank" class="nav-link">Калькулятор стоимости</a>
-  <a href="/krasunit/about.html" class="nav-link">О компании</a>
-</div>
+      <a href="/krasunit/" class="nav-link">Главная страница</a>
+      <a href="/krasunit/garages.html" class="nav-link">Каталог гаражей</a>
+      <a href="/krasunit/construction.html" target="_blank" class="nav-link">Детали конструкции</a>
+      <a href="/krasunit/calculator.html" target="_blank" class="nav-link">Калькулятор стоимости</a>
+      <a href="/krasunit/about.html" class="nav-link">О компании</a>
+    </div>
 
+    <!-- Вкладки галереи -->
     <div class="section">
-      <div class="projects-grid">
-        <div class="project-card">
-          <img src="/krasunit/projects/ovoschehranilische.jpg" alt="Овощехранилище 24×54 м">
-          <h3>Овощехранилище 24×54 м</h3>
-          <p><strong>Место:</strong> Красноярский край<br>
-          <strong>Особенности:</strong> Система вентиляции и климат-контроля, сэндвич-панели 150 мм<br>
-          <strong>Сроки:</strong> 18 дней монтажа</p>
+      <div class="gallery-tabs">
+        <button class="tab-btn active" data-tab="garages">Наши гаражи</button>
+        <button class="tab-btn" data-tab="other">Другие объекты</button>
+      </div>
+
+      <!-- Раздел: Наши гаражи -->
+      <div id="garages-tab" class="gallery-content">
+        <h2>🏡 Наши гаражи — уголки счастья для вашей семьи</h2>
+        <p style="font-size: 1.22rem; line-height: 1.8; margin-bottom: 30px; color: #555; max-width: 800px; margin-left: auto; margin-right: auto;">
+          Каждый гараж от КрасЮнит — это не просто строение для автомобиля, а <strong>место, где рождаются семейные воспоминания</strong>. Здесь ваша собака будет ждать вас после работы, дети будут играть на зеленой лужайке, а закаты будут освещать уютные вечера. Мы строим не гаражи — мы создаем <strong>островки счастья</strong> по всей России.
+        </p>
+        
+        <div class="gallery-grid">
+          <!-- Гараж 1: 3×5×3.5 м -->
+          <div class="project-card">
+            <img src="/krasunit/projects/garage-3x5.jpg" alt="Гараж 3×5×3.5 м в окружении цветущих яблонь" class="project-image">
+            <div class="project-content">
+              <h3>Гараж 3×5×3.5 м</h3>
+              <p>Утренняя гармония: ваш надежный уголок среди цветущих яблонь, где щенок ждет вас у ворот с первыми лучами солнца.</p>
+              <div class="project-features">
+                <span class="feature">15 м²</span>
+                <span class="feature">Высота 3.5 м</span>
+                <span class="feature">1 секционные ворота</span>
+              </div>
+              <span class="price-tag">
+                от 423 000 ₽
+                <small><s>604 000 ₽</s> <span class="discount-badge">-30%</span></small>
+              </span>
+              <div class="emotion-badge">Здесь начинается ваше утро</div>
+            </div>
+          </div>
+          
+          <!-- Гараж 2: 6×6×4 м -->
+          <div class="project-card">
+            <img src="/krasunit/projects/garage-6x6.jpg" alt="Гараж 6×6×4 м среди березовой рощи" class="project-image">
+            <div class="project-content">
+              <h3>Гараж 6×6×4 м</h3>
+              <p>Семейное счастье: просторный дом для двух автомобилей, где ваш лабрадор встречает вас с теннисным мячиком после долгого дня.</p>
+              <div class="project-features">
+                <span class="feature">36 м²</span>
+                <span class="feature">Высота 4 м</span>
+                <span class="feature">2 секционных ворота</span>
+              </div>
+              <span class="price-tag">
+                от 1 015 000 ₽
+                <small><s>1 450 000 ₽</s> <span class="discount-badge">-30%</span></small>
+              </span>
+              <div class="emotion-badge">Ваша семья заслуживает лучшего</div>
+            </div>
+          </div>
+          
+          <!-- Гараж 3: 5×8×4.5 м -->
+          <div class="project-card">
+            <img src="/krasunit/projects/garage-5x8.jpg" alt="Гараж 5×8×4.5 м в лесной поляне" class="project-image">
+            <div class="project-content">
+              <h3>Гараж 5×8×4.5 м</h3>
+              <p>Лесная сказка: уединенный уголок среди вековых дубов, где любопытная белка наблюдает за вашим возвращением с ветки старого дуба.</p>
+              <div class="project-features">
+                <span class="feature">40 м²</span>
+                <span class="feature">Высота 4.5 м</span>
+                <span class="feature">1 секционные ворота</span>
+              </div>
+              <span class="price-tag">
+                от 1 128 000 ₽
+                <small><s>1 612 000 ₽</s> <span class="discount-badge">-30%</span></small>
+              </span>
+              <div class="emotion-badge">Гармония с природой</div>
+            </div>
+          </div>
+          
+          <!-- Гараж 4: 9×11×4.5 м -->
+          <div class="project-card">
+            <img src="/krasunit/projects/garage-9x11.jpg" alt="Гараж 9×11×4.5 м на просторном участке" class="project-image">
+            <div class="project-content">
+              <h3>Гараж 9×11×4.5 м</h3>
+              <p>Простор для мечты: величественное строение на зеленом лугу, где пограничная колли отдыхает на клетчатом одеяле под старой яблоней.</p>
+              <div class="project-features">
+                <span class="feature">99 м²</span>
+                <span class="feature">Высота 4.5 м</span>
+                <span class="feature">2 секционных ворота</span>
+              </div>
+              <span class="price-tag">
+                от 2 793 000 ₽
+                <small><s>3 990 000 ₽</s> <span class="discount-badge">-30%</span></small>
+              </span>
+              <div class="emotion-badge">Здесь живут ваши мечты</div>
+            </div>
+          </div>
+          
+          <!-- Гараж 5: 12×18×4.5 м -->
+          <div class="project-card">
+            <img src="/krasunit/projects/garage-12x18.jpg" alt="Гараж 12×18×4.5 м в частном поместье" class="project-image">
+            <div class="project-content">
+              <h3>Гараж 12×18×4.5 м</h3>
+              <p>Ваш личный рай: величественный ангар в окружении вековых дубов, где семья оленей пасется на краю цветущего луга под звездным небом.</p>
+              <div class="project-features">
+                <span class="feature">216 м²</span>
+                <span class="feature">Высота 4.5 м</span>
+                <span class="feature">3 секционных ворота</span>
+              </div>
+              <span class="price-tag">
+                от 6 094 000 ₽
+                <small><s>8 705 000 ₽</s> <span class="discount-badge">-30%</span></small>
+              </span>
+              <div class="emotion-badge">Место, где хочется остаться навсегда</div>
+            </div>
+          </div>
         </div>
         
-        <div class="project-card">
-          <img src="/krasunit/projects/garazh-sh-tehniki.jpg" alt="Гараж для сельхозтехники 24×48 м">
-          <h3>Гараж для С/Х техники 24×48 м</h3>
-          <p><strong>Место:</strong> Новосибирская область<br>
-          <strong>Особенности:</strong> Высота 6 м, усиленные конструкции для тяжелой техники</p>
-        </div>
-        
-        <div class="project-card">
-          <img src="/krasunit/projects/sklad.jpg" alt="Склад 24×58 м">
-          <h3>Склад 24×58 м</h3>
-          <p><strong>Место:</strong> Иркутская область</p>
-        </div>
-        
-        <div class="project-card">
-          <img src="/krasunit/projects/boks.jpg" alt="Автобокс 9×18 м">
-          <h3>Автобокс 9×18 м</h3>
-          <p><strong>Место:</strong> Кемеровская область</p>
-        </div>
-        
-        <div class="project-card">
-          <img src="/krasunit/projects/ellling.jpg" alt="Эллинг 6×12 м">
-          <h3>Эллинг 6×12 м</h3>
-          <p><strong>Место:</strong> Республика Хакасия</p>
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #f8fafd 0%, #fcfdff 100%); border-radius: 14px; border: 1px solid #dbe6f5;">
+          <h3 style="color: #2d2d2d; margin-bottom: 15px; font-size: 1.6rem;">✨ Специальное предложение</h3>
+          <p style="font-size: 1.25rem; line-height: 1.7; color: #555; max-width: 700px; margin: 0 auto 25px;">
+            <strong>Скидка 30% на все гаражи при заказе до 01.04.2026!</strong><br>
+            Подарите себе и своей семье уголок счастья — место, где будут рождаться самые теплые воспоминания.
+          </p>
+          <a href="/krasunit/garages.html" class="nav-link" style="display: inline-block; max-width: 400px; margin: 0 auto;">
+            🌳 Посмотреть весь каталог гаражей
+          </a>
         </div>
       </div>
-      <p style="text-align: center; margin-top: 30px; font-style: italic; color: #5a6c81; font-weight: 500; font-size: 1.15rem;">
-        Все объекты построены из ЛСТК с гарантией 10 лет. Возможна разработка индивидуального проекта под ваши задачи.
-      </p>
+
+      <!-- Раздел: Другие объекты -->
+      <div id="other-tab" class="gallery-content" style="display: none;">
+        <h2>🏗️ Другие реализованные объекты</h2>
+        <p style="font-size: 1.18rem; line-height: 1.8; margin-bottom: 30px; color: #555;">
+          Помимо гаражей, мы строим ангары, склады, овощехранилища и другие объекты из ЛСТК по всей России. Каждый проект — это надежная конструкция с гарантией 10 лет.
+        </p>
+        
+        <div class="gallery-grid">
+          <div class="project-card">
+            <img src="/krasunit/projects/ovoschehranilische.jpg" alt="Овощехранилище 24×54 м" class="project-image">
+            <div class="project-content">
+              <h3>Овощехранилище 24×54 м</h3>
+              <p><strong>Место:</strong> Красноярский край<br>
+              <strong>Особенности:</strong> Система вентиляции и климат-контроля, сэндвич-панели 150 мм</p>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <img src="/krasunit/projects/garazh-sh-tehniki.jpg" alt="Гараж для сельхозтехники 24×48 м" class="project-image">
+            <div class="project-content">
+              <h3>Гараж для С/Х техники 24×48 м</h3>
+              <p><strong>Место:</strong> Новосибирская область<br>
+              <strong>Особенности:</strong> Высота 6 м, усиленные конструкции</p>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <img src="/krasunit/projects/sklad.jpg" alt="Склад 24×58 м" class="project-image">
+            <div class="project-content">
+              <h3>Склад 24×58 м</h3>
+              <p><strong>Место:</strong> Иркутская область</p>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <img src="/krasunit/projects/boks.jpg" alt="Автобокс 9×18 м" class="project-image">
+            <div class="project-content">
+              <h3>Автобокс 9×18 м</h3>
+              <p><strong>Место:</strong> Кемеровская область</p>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <img src="/krasunit/projects/ellling.jpg" alt="Эллинг 6×12 м" class="project-image">
+            <div class="project-content">
+              <h3>Эллинг 6×12 м</h3>
+              <p><strong>Место:</strong> Республика Хакасия</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -370,5 +639,29 @@
       </p>
     </div>
   </footer>
+
+  <script>
+    // Переключение вкладок галереи
+    document.querySelectorAll('.tab-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        // Убираем активный класс у всех кнопок
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        
+        // Добавляем активный класс текущей кнопке
+        button.classList.add('active');
+        
+        // Скрываем все контенты
+        document.querySelectorAll('.gallery-content').forEach(content => {
+          content.style.display = 'none';
+        });
+        
+        // Показываем нужный контент
+        const tabId = button.getAttribute('data-tab');
+        document.getElementById(`${tabId}-tab`).style.display = 'block';
+      });
+    });
+  </script>
 </body>
 </html>
