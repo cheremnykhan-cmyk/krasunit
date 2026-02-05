@@ -700,15 +700,15 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
                   `ДОПОЛНИТЕЛЬНО: ${data.comments}`;
   
   // Отправка в телеграм
-  try {
-    const response = await fetch(`https://api.telegram.org/bot7958824238:AAGTyFNDncbhf_2BmJ7B30xt8BRog8MxPVw/sendMessage`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        chat_id: '1399740836',
-        text: message
-      })
-    });
+      try {
+        const response = await fetch(`https://api.telegram.org/bot7958824238:AAGTyFNDncbhf_2BmJ7B30xt8BRog8MxPVw/sendMessage`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          chat_id: '1399740836',
+            text: message
+          })
+        });
     
     const result = await response.json();
     
