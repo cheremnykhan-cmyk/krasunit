@@ -3,6 +3,406 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КрасЮнит — гаражи и ангары из ЛСТК под ключ</title>
+  <meta name="description" content="Изготовление гаражей, ангаров, складов и боксов из ЛСТК по всей России. Низкая стоимость, быстрые сроки, экономия на отоплении.">
+  <meta name="keywords" content="гараж из ЛСТК, ангар из сэндвич панелей, склад под ключ, строительство ангаров, ЛСТК конструкции">
+  <meta property="og:title" content="КрасЮнит — гаражи и ангары из ЛСТК под ключ">
+  <meta property="og:description" content="Строительство гаражей, ангаров, складов из ЛСТК по всей России. Гарантия 10 лет. Расчет стоимости онлайн.">
+  <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+     ym(106449823, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true,
+          trackHash:true
+     });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/106449823" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+  <style>
+    :root {
+      --graphite: #2d2d2d;
+      --sky-blue: #54a0ff;
+      --dark-blue: #1a1a1a;
+      --light-bg: #f9fbfd;
+      --card-bg: #ffffff;
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: var(--light-bg);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(84, 160, 255, 0.03) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(45, 45, 45, 0.02) 0%, transparent 40%);
+      z-index: -1;
+    }
+    
+    /* Навигация */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
+    }
+    
+    .navbar.scrolled {
+      padding: 10px 0;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    .navbar-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    
+    .logo-img {
+      height: 50px;
+      width: auto;
+      transition: var(--transition);
+    }
+    
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--graphite);
+    }
+    
+    .logo-text span {
+      color: var(--sky-blue);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+    
+    .nav-item a {
+      color: var(--graphite);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: var(--transition);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .nav-item a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--sky-blue);
+      transition: width 0.3s;
+    }
+    
+    .nav-item a:hover {
+      color: var(--sky-blue);
+    }
+    
+    .nav-item a:hover::after {
+      width: 70%;
+    }
+    
+    .nav-item.active a {
+      color: var(--sky-blue);
+      background: rgba(84, 160, 255, 0.08);
+    }
+    
+    .nav-item.active a::after {
+      width: 70%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--graphite);
+      cursor: pointer;
+    }
+    
+    /* Секции */
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 70px;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-size: 3.2rem;
+      color: var(--graphite);
+      display: inline-block;
+      position: relative;
+      padding-bottom: 20px;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 6px;
+      background: linear-gradient(90deg, var(--graphite) 0%, var(--sky-blue) 100%);
+      border-radius: 3px;
+    }
+    
+    .section-title p {
+      font-size: 1.4rem;
+      color: #666;
+      margin-top: 15px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Контейнер для контента */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+    
+    /* Футер */
+    footer {
+      background: var(--graphite);
+      color: white;
+      padding: 80px 0 40px;
+    }
+    
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+    }
+    
+    .footer-col h3 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--sky-blue);
+      border-radius: 2px;
+    }
+    
+    .footer-col p {
+      color: #bbb;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 15px;
+    }
+    
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      display: block;
+      padding: 8px 0;
+    }
+    
+    .footer-links a:hover {
+      color: var(--sky-blue);
+      transform: translateX(5px);
+    }
+    
+    .contact-info {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .contact-info li {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+      color: #ddd;
+      font-size: 1.1rem;
+    }
+    
+    .contact-info i {
+      font-size: 1.5rem;
+      color: var(--sky-blue);
+      min-width: 25px;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 1.05rem;
+    }
+    
+    /* Адаптивность */
+    @media (max-width: 992px) {
+      .section-title h2 {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: white;
+        flex-direction: column;
+        padding: 40px 0;
+        transition: left 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-links.active {
+        left: 0;
+      }
+      
+      .nav-item {
+        margin: 10px 0;
+      }
+      
+      .nav-item a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 1.4rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2.4rem;
+      }
+      
+      .section-title p {
+        font-size: 1.25rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Навигация -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="logo">
+        <img src="/krasunit/Logo.JPG" alt="КрасЮнит" class="logo-img">
+        <span class="logo-text">Крас<span>Юнит</span></span>
+      </a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        ☰
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-item"><a href="/krasunit/">Главная</a></li>
+        <li class="nav-item"><a href="/krasunit/garages.html">Каталог гаражей</a></li>
+        <li class="nav-item"><a href="/krasunit/projects.html">Примеры работ</a></li>
+        <li class="nav-item"><a href="/krasunit/construction.html">Детали конструкции</a></li>
+        <li class="nav-item"><a href="/krasunit/calculator.html">Калькулятор</a></li>
+        <li class="nav-item"><a href="/krasunit/about.html">О компании</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Контент страницы -->
+  <div class="container">
+    <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Конструкция зданий из ЛСТК — КрасЮнит</title>
   <meta name="description" content="Детальная схема и описание элементов каркаса из ЛСТК для гаражей, ангаров и складов. Фундаменты, сэндвич-панели, узлы соединений.">
   <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
@@ -663,5 +1063,81 @@
       </p>
     </div>
   </footer>
+</body>
+</html>
+  </div>
+
+  <!-- Футер -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>КрасЮнит</h3>
+        <p>Профессиональное строительство гаражей, ангаров и складов из ЛСТК по всей России. Гарантия 10 лет, быстрые сроки, экономия на отоплении.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Навигация</h3>
+        <ul class="footer-links">
+          <li><a href="/krasunit/">Главная</a></li>
+          <li><a href="/krasunit/garages.html">Каталог гаражей</a></li>
+          <li><a href="/krasunit/projects.html">Примеры работ</a></li>
+          <li><a href="/krasunit/construction.html">Детали конструкции</a></li>
+          <li><a href="/krasunit/calculator.html">Калькулятор</a></li>
+          <li><a href="/krasunit/about.html">О компании</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Контакты</h3>
+        <ul class="contact-info">
+          <li>
+            <span>📍</span>
+            <span>660017, г. Красноярск, ул. Рейдовая, д. 68Д, пом. 317</span>
+          </li>
+          <li>
+            <span>📞</span>
+            <span>+7 (391) 282-23-40</span>
+          </li>
+          <li>
+            <span>✉️</span>
+            <span><a href="mailto:krasunit@mail.ru" style="color:#ddd;text-decoration:none">krasunit@mail.ru</a></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>© 2026 КрасЮнит. Все права защищены. ООО «КрасЮнит» ИНН 2466296100</p>
+    </div>
+  </footer>
+
+  <script>
+    // Мобильное меню
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+    
+    // Закрытие меню при клике на ссылку
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '☰';
+      });
+    });
+    
+    // Изменение стиля навбара при прокрутке
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
