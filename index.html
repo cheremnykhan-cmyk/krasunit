@@ -63,157 +63,115 @@
     }
     
     /* Навигация */
-    /* Навигация */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 15px 0;
-  z-index: 1000;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-  transition: var(--transition);
-}
-
-/* Мобильное меню - КНОПКА УВЕЛИЧЕНА */
-.mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2.4rem; /* Увеличен размер с 1.8rem до 2.4rem */
-  color: var(--graphite);
-  cursor: pointer;
-  z-index: 1001;
-  /* Добавлены отступы для лучшей области касания */
-  padding: 10px;
-  margin: -10px; /* Компенсация отступов */
-}
-
-/* Список ссылок */
-.nav-links {
-  display: flex;
-  gap: 8px;
-  list-style: none;
-  position: relative;
-}
-
-/* Ссылки в меню */
-.nav-item a {
-  color: var(--graphite);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.05rem;
-  padding: 10px 18px;
-  border-radius: 8px;
-  transition: var(--transition);
-  position: relative;
-  display: inline-block;
-}
-
-.nav-item a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 3px;
-  background: var(--sky-blue);
-  transition: width 0.3s;
-}
-
-.nav-item a:hover {
-  color: var(--sky-blue);
-}
-
-.nav-item a:hover::after {
-  width: 70%;
-}
-
-/* Активная ссылка */
-.nav-item.active a {
-  color: var(--sky-blue);
-  background: rgba(84, 160, 255, 0.08);
-}
-
-.nav-item.active a::after {
-  width: 70%;
-}
-
-/* Мобильное меню */
-@media (max-width: 768px) {
-  .mobile-menu-btn {
-    display: block;
-    /* Добавлено: тень для лучшей заметности */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    /* Добавлено: анимация при наведении */
-    transition: transform 0.2s;
-  }
-  
-  .mobile-menu-btn:hover {
-    transform: scale(1.15);
-  }
-  
-  .nav-links {
-    position: fixed;
-    top: 80px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 80px);
-    background: white;
-    flex-direction: column;
-    padding: 40px 0;
-    transition: left 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    /* Улучшение видимости */
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .nav-links.active {
-    left: 0;
-  }
-  
-  .nav-item {
-    margin: 12px 0;
-  }
-  
-  .nav-item a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 1.8rem; /* Увеличен размер с 1.6rem до 1.8rem */
-    font-weight: 600;
-    /* Улучшение области касания */
-    min-height: 65px; /* Увеличено с 60px до 65px */
-    /* Более заметный hover-эффект */
-    transition: all 0.3s;
-    /* Добавлены тени для лучшей видимости */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  }
-  
-  .nav-item a:hover {
-    background: #f0f7ff;
-    transform: translateX(8px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-item a::after {
-    display: none;
-  }
-  
-  .nav-item.active a {
-    background: #e3f2fd;
-    color: var(--sky-blue);
-    font-weight: 700;
-    /* Добавлено: более заметный бордер */
-    border-left: 4px solid var(--sky-blue);
-  }
-}
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
+    }
+    
+    .navbar.scrolled {
+      padding: 10px 0;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    .navbar-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    
+    .logo-img {
+      height: 50px;
+      width: auto;
+      transition: var(--transition);
+    }
+    
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--graphite);
+    }
+    
+    .logo-text span {
+      color: var(--sky-blue);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+    
+    .nav-item a {
+      color: var(--graphite);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: var(--transition);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .nav-item a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--sky-blue);
+      transition: width 0.3s;
+    }
+    
+    .nav-item a:hover {
+      color: var(--sky-blue);
+    }
+    
+    .nav-item a:hover::after {
+      width: 70%;
+    }
+    
+    .nav-item.active a {
+      color: var(--sky-blue);
+      background: rgba(84, 160, 255, 0.08);
+    }
+    
+    .nav-item.active a::after {
+      width: 70%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--graphite);
+      cursor: pointer;
     }
     
     /* Герой-секция */
@@ -729,25 +687,24 @@
 <body>
   <!-- Навигация -->
   <nav class="navbar">
-  <div class="navbar-container">
-    <a href="/krasunit/" class="logo">
-      <img src="/krasunit/Logo.JPG" alt="КрасЮнит" class="logo-img">
-      <span class="logo-text">Крас<span>Юнит</span></span>
-    </a>
-    
-    <button class="mobile-menu-btn" id="mobileMenuBtn">
-      ☰
-    </button>
-    
-    <ul class="nav-links" id="navLinks">
-      <li class="nav-item"><a href="/krasunit/">Главная</a></li>
-      <li class="nav-item"><a href="/krasunit/garages.html">Каталог</a></li>
-      <li class="nav-item"><a href="/krasunit/projects.html">Примеры работ</a></li>
-      <li class="nav-item"><a href="/krasunit/construction.html">Детали конструкции</a></li>
-      <li class="nav-item"><a href="/krasunit/calculator.html">Калькулятор</a></li>
-      <li class="nav-item"><a href="/krasunit/about.html">О компании</a></li>
-    </ul>
-  </div>
+    <div class="navbar-container">
+      <a href="/" class="logo">
+        <img src="/krasunit/Logo.JPG" alt="КрасЮнит" class="logo-img">
+        <span class="logo-text">Крас<span>Юнит</span></span>
+      </a>
+      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        ☰
+      </button>
+      
+      <ul class="nav-links" id="navLinks">
+        <li class="nav-item active"><a href="#projects">Проекты</a></li>
+        <li class="nav-item"><a href="#features">Преимущества</a></li>
+        <li class="nav-item"><a href="/krasunit/garages.html">Каталог</a></li>
+        <li class="nav-item"><a href="/krasunit/calculator.html">Калькулятор</a></li>
+        <li class="nav-item"><a href="/krasunit/about.html">О компании</a></li>
+      </ul>
+    </div>
   </nav>
 
   <!-- Герой-секция -->
