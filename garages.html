@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Каталог гаражей — КрасЮнит</title>
-  <meta name="description" content="Каталог гаражей из ЛСТК под ключ. Цены, характеристики и фото гаражей 3×5 м, 6×6 м, 9×11 м и других размеров.">
-  <meta name="keywords" content="каталог гаражей, гаражи из ЛСТК, цены на гаражи, гаражи под ключ">
+  <meta name="description" content="Каталог гаражей, ангаров и складов из ЛСТК под ключ. Размеры от 3x4 до 36x36 м. Стоимость и технические характеристики.">
+  <meta name="keywords" content="каталог гаражей, гаражи из ЛСТК, ангары под ключ, склады из сэндвич панелей">
   <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -340,132 +340,64 @@
     }
     
     /* Каталог гаражей */
-    .garage-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 35px;
+    .catalog {
       max-width: 1400px;
       margin: 0 auto;
       padding: 0 30px;
     }
     
-    .garage-card {
-      background: var(--card-bg);
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 35px;
+    }
+    
+    .catalog-item {
+      background: white;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: var(--shadow);
       transition: var(--transition);
       position: relative;
-      height: 480px;
+      cursor: pointer;
     }
     
-    .garage-card:hover {
+    .catalog-item:hover {
       transform: translateY(-15px) scale(1.02);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     }
     
-    .garage-img {
-      height: 300px;
+    .catalog-item img {
       width: 100%;
+      height: 320px;
       object-fit: cover;
+      transition: transform 0.7s ease;
     }
     
-    .garage-content {
+    .catalog-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .catalog-description {
       padding: 25px;
       text-align: center;
     }
     
-    .garage-content h3 {
-      font-size: 2.2rem;
+    .catalog-description h3 {
+      font-size: 1.8rem;
       color: var(--graphite);
       margin-bottom: 15px;
     }
     
-    .garage-features {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 15px 0;
-    }
-    
-    .feature {
-      background: #f0f7ff;
-      border-radius: 12px;
-      padding: 10px 15px;
-      font-size: 1.1rem;
-      color: var(--graphite);
-    }
-    
-    .garage-price {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--graphite);
-      margin: 15px 0;
-    }
-    
-    .garage-price span {
-      font-size: 1.5rem;
-      color: #555;
-      font-weight: 400;
-    }
-    
-    .garage-cta {
-      margin-top: 10px;
-    }
-    
-    /* Преимущества */
-    .advantages {
-      background: linear-gradient(135deg, #f8fafd 0%, #fcfdff 100%);
-    }
-    
-    .advantages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 30px;
-    }
-    
-    .advantage-card {
-      background: var(--card-bg);
-      border-radius: 25px;
-      padding: 40px;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      text-align: center;
-      position: relative;
-    }
-    
-    .advantage-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-    }
-    
-    .advantage-icon {
-      width: 90px;
-      height: 90px;
-      background: linear-gradient(135deg, var(--sky-blue) 0%, #2d2d2d 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 25px;
-      font-size: 2.8rem;
-      color: white;
-      box-shadow: 0 10px 25px rgba(84, 160, 255, 0.3);
-    }
-    
-    .advantage-card h3 {
-      font-size: 2.1rem;
-      color: var(--graphite);
-      margin-bottom: 20px;
-    }
-    
-    .advantage-card p {
+    .catalog-description p {
       color: #555;
       line-height: 1.7;
       font-size: 1.15rem;
+    }
+    
+    .highlight {
+      color: var(--sky-blue);
+      font-weight: 700;
     }
     
     /* Форма заявки */
@@ -725,12 +657,16 @@
         font-size: 1.25rem;
       }
       
-      .garage-card {
+      .catalog-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .catalog-item {
         height: auto;
       }
       
-      .garage-img {
-        height: 200px;
+      .catalog-item img {
+        height: 280px;
       }
       
       .contact-form {
@@ -762,16 +698,16 @@
         font-size: 2rem;
       }
       
-      .garage-img {
-        height: 180px;
+      .catalog-item img {
+        height: 250px;
       }
       
-      .garage-price {
-        font-size: 2.2rem;
+      .catalog-description h3 {
+        font-size: 1.6rem;
       }
       
-      .garage-cta {
-        margin-top: 5px;
+      .catalog-description p {
+        font-size: 1.05rem;
       }
       
       .contact-form {
@@ -812,8 +748,8 @@
   <!-- Герой-секция -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Каталог гаражей</h1>
-      <p>Строим гаражи из ЛСТК под ключ. Гарантия 10 лет, быстрые сроки, экономия на отоплении.</p>
+      <h1>Каталог гаражей и ангаров</h1>
+      <p>Размеры от 3×4 до 36×36 м. Строим за 5 дней • Экономим 40% на отоплении • Гарантия 10 лет</p>
       <div class="hero-buttons">
         <a href="#catalog" class="btn btn-primary">Посмотреть каталог</a>
         <a href="/krasunit/calculator.html" class="btn btn-secondary">Рассчитать стоимость</a>
@@ -824,175 +760,137 @@
   <!-- Каталог гаражей -->
   <section id="catalog" class="section">
     <div class="section-title fade-in">
-      <h2>Каталог гаражей</h2>
-      <p>Выберите подходящий вариант для ваших задач</p>
+      <h2>Каталог гаражей и ангаров</h2>
+      <p>Выберите подходящий размер и конфигурацию для ваших нужд</p>
     </div>
     
-    <div class="garage-cards">
-      <div class="garage-card fade-in">
-        <img src="/krasunit/projects/Garag_3,5x5_Luxary.jpg" alt="Гараж 3x5 м" class="garage-img">
-        <div class="garage-content">
-          <h3>Гараж 3×5 м</h3>
-          
-          <div class="garage-features">
-            <div class="feature">1 машина</div>
-            <div class="feature">Сэндвич-панели 150 мм</div>
-          </div>
-          
-          <div class="garage-price">
-            <span>от</span> 450 000 ₽
-          </div>
-          
-          <div class="garage-cta">
-            <a href="/krasunit/calculator.html" class="btn btn-primary">Рассчитать стоимость</a>
+    <div class="catalog fade-in">
+      <div class="catalog-grid">
+        <!-- Гаражи 6x15 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Boks_6x15.jpg" alt="Комфортный гараж для 5 легковых автомобилей">
+          <div class="catalog-description">
+            <h3>Комфортный гараж 6×15 м</h3>
+            <p>Идеальное решение для <span class="highlight">5 легковых автомобилей</span>. Широкие проезды, удобная планировка, возможность установки технического помещения.</p>
           </div>
         </div>
-      </div>
-      
-      <div class="garage-card fade-in">
-        <img src="/krasunit/projects/Garag_3,5x6_Luxary.jpg" alt="Гараж 6x6 м" class="garage-img">
-        <div class="garage-content">
-          <h3>Гараж 6×6 м</h3>
-          
-          <div class="garage-features">
-            <div class="feature">2 машины</div>
-            <div class="feature">Сэндвич-панели 150 мм</div>
-          </div>
-          
-          <div class="garage-price">
-            <span>от</span> 680 000 ₽
-          </div>
-          
-          <div class="garage-cta">
-            <a href="/krasunit/calculator.html" class="btn btn-primary">Рассчитать стоимость</a>
+        
+        <!-- Гаражи 9x15 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Boks_9x15.jpg" alt="Гараж для грузового автомобиля с одними воротами и с техническим помещением">
+          <div class="catalog-description">
+            <h3>Гараж 9×15 м</h3>
+            <p>Просторное помещение для <span class="highlight">грузового автомобиля</span> с одними воротами и техническим помещением. Идеально подходит для коммерческого использования.</p>
           </div>
         </div>
-      </div>
-      
-      <div class="garage-card fade-in">
-        <img src="/krasunit/projects/Garag_8x6_Strong.jpg" alt="Гараж 5x8 м" class="garage-img">
-        <div class="garage-content">
-          <h3>Гараж 5×8 м</h3>
-          
-          <div class="garage-features">
-            <div class="feature">2-3 машины</div>
-            <div class="feature">Сэндвич-панели 150 мм</div>
-          </div>
-          
-          <div class="garage-price">
-            <span>от</span> 950 000 ₽
-          </div>
-          
-          <div class="garage-cta">
-            <a href="/krasunit/calculator.html" class="btn btn-primary">Рассчитать стоимость</a>
+        
+        <!-- Эллинг 3x4 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Elling 3x4.jpg" alt="Эллинг для гидроцикла">
+          <div class="catalog-description">
+            <h3>Эллинг 3×4 м</h3>
+            <p>Компактное решение для <span class="highlight">гидроцикла</span> и водного транспорта. Водонепроницаемое покрытие, удобные подъезды.</p>
           </div>
         </div>
-      </div>
-      
-      <div class="garage-card fade-in">
-        <img src="/krasunit/projects/Garag_9x6_Luxary.jpg" alt="Гараж 9x11 м" class="garage-img">
-        <div class="garage-content">
-          <h3>Гараж 9×11 м</h3>
-          
-          <div class="garage-features">
-            <div class="feature">3-4 машины</div>
-            <div class="feature">Сэндвич-панели 150 мм</div>
-          </div>
-          
-          <div class="garage-price">
-            <span>от</span> 1 450 000 ₽
-          </div>
-          
-          <div class="garage-cta">
-            <a href="/krasunit/calculator.html" class="btn btn-primary">Рассчитать стоимость</a>
+        
+        <!-- Эллинг 12x8 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Elling 12x8.jpg" alt="Эллинг с кран-балкой">
+          <div class="catalog-description">
+            <h3>Эллинг 12×8 м</h3>
+            <p>Просторный эллинг с <span class="highlight">кран-балкой</span> для обслуживания яхт и катеров. Система осушения, стапель для ремонта.</p>
           </div>
         </div>
-      </div>
-      
-      <div class="garage-card fade-in">
-        <img src="/krasunit/projects/Garag_10x6_Luxary.jpg" alt="Гараж 12x18 м" class="garage-img">
-        <div class="garage-content">
-          <h3>Гараж 12×18 м</h3>
-          
-          <div class="garage-features">
-            <div class="feature">4-5 машин</div>
-            <div class="feature">Сэндвич-панели 150 мм</div>
-          </div>
-          
-          <div class="garage-price">
-            <span>от</span> 2 350 000 ₽
-          </div>
-          
-          <div class="garage-cta">
-            <a href="/krasunit/calculator.html" class="btn btn-primary">Рассчитать стоимость</a>
+        
+        <!-- Гараж 4x4 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Garag_4x4.jpg" alt="Гараж для загородного дома">
+          <div class="catalog-description">
+            <h3>Гараж 4×4 м</h3>
+            <p>Компактный гараж для <span class="highlight">загородного дома</span>. Идеально подходит для одного легкового автомобиля, экономия места и средств.</p>
           </div>
         </div>
-      </div>
-      
-      <div class="garage-card fade-in">
-        <img src="/krasunit/projects/garage-3x5-Strong.jpg" alt="Овощехранилище" class="garage-img">
-        <div class="garage-content">
-          <h3>Овощехранилище</h3>
-          
-          <div class="garage-features">
-            <div class="feature">Климат-контроль</div>
-            <div class="feature">Система вентиляции</div>
-          </div>
-          
-          <div class="garage-price">
-            <span>от</span> 1 850 000 ₽
-          </div>
-          
-          <div class="garage-cta">
-            <a href="/krasunit/calculator.html" class="btn btn-primary">Рассчитать стоимость</a>
+        
+        <!-- Гараж 5x5 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Garag_5x5.jpg" alt="Многофункциональный гараж с большими воротами">
+          <div class="catalog-description">
+            <h3>Гараж 5×5 м</h3>
+            <p>Многофункциональное помещение с <span class="highlight">большими воротами</span>. Подходит для легкового автомобиля и дополнительного хранения.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Преимущества -->
-  <section class="section advantages">
-    <div class="section-title fade-in">
-      <h2>Преимущества гаражей из ЛСТК</h2>
-      <p>Почему выбирают именно нашу технологию</p>
-    </div>
-    
-    <div class="advantages-grid">
-      <div class="advantage-card fade-in">
-        <div class="advantage-icon">🔥</div>
-        <h3>Экономия на отоплении</h3>
-        <p>Снижаем затраты на обогрев на 40% благодаря сэндвич-панелям 150 мм. При -40°C внутри +15°C без дополнительного обогрева.</p>
-      </div>
-      
-      <div class="advantage-card fade-in">
-        <div class="advantage-icon">⚡</div>
-        <h3>Быстрый монтаж</h3>
-        <p>Собираем за 5 дней — ваш гараж готов к эксплуатации мгновенно. Не нужно ждать набора прочности бетона.</p>
-      </div>
-      
-      <div class="advantage-card fade-in">
-        <div class="advantage-icon">🛡️</div>
-        <h3>Долговечность</h3>
-        <p>Гарантия 10 лет, фактический срок службы — более 50 лет. ЛСТК не подвержен коррозии, не горит и не гниет.</p>
-      </div>
-      
-      <div class="advantage-card fade-in">
-        <div class="advantage-icon">🏗️</div>
-        <h3>Облегченный фундамент</h3>
-        <p>Экономия 60% на фундаменте благодаря легкому весу конструкции. Используем свайно-винтовые или столбчатые фундаменты.</p>
-      </div>
-      
-      <div class="advantage-card fade-in">
-        <div class="advantage-icon">🎨</div>
-        <h3>Эстетика</h3>
-        <p>Современный внешний вид без дополнительной отделки. Доступно 15+ цветов, возможна индивидуальная расцветка.</p>
-      </div>
-      
-      <div class="advantage-card fade-in">
-        <div class="advantage-icon">🔄</div>
-        <h3>Мобильность</h3>
-        <p>Возможность переноса здания на новый участок без потери качества и функциональности.</p>
+        
+        <!-- Гараж 6x5 с окном -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Garag_6x5_win.jpg" alt="Гараж для двух автомобилей с окном">
+          <div class="catalog-description">
+            <h3>Гараж 6×5 м</h3>
+            <p>Гараж для <span class="highlight">двух автомобилей</span> с окном для естественного освещения. Светлое и удобное пространство для хранения.</p>
+          </div>
+        </div>
+        
+        <!-- Гараж 6x6 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Garag_6x6.jpg" alt="Просторный гараж для легкового автомобиля, снегохода и квадроцикла">
+          <div class="catalog-description">
+            <h3>Гараж 6×6 м</h3>
+            <p>Просторный гараж для <span class="highlight">легкового автомобиля, снегохода и квадроцикла</span>. Оптимальное соотношение цены и функциональности.</p>
+          </div>
+        </div>
+        
+        <!-- Гараж 9x6 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Garag_9x6.jpg" alt="Вместительный гараж для двух внедорожников, снегохода, квадроцикла">
+          <div class="catalog-description">
+            <h3>Гараж 9×6 м</h3>
+            <p>Вместительное помещение для <span class="highlight">двух внедорожников, снегохода, квадроцикла</span>. Просторная планировка, возможность установки технического помещения.</p>
+          </div>
+        </div>
+        
+        <!-- Гараж 9x9 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Garag_9x9.jpg" alt="Универсальный, вместительный гараж с двумя воротами">
+          <div class="catalog-description">
+            <h3>Гараж 9×9 м</h3>
+            <p>Универсальное решение с <span class="highlight">двумя воротами</span>. Подходит для хранения техники, коммерческого использования и гаражного ремонта.</p>
+          </div>
+        </div>
+        
+        <!-- Гараж 11x6 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Garag_11x6.jpg" alt="Гараж для спецтехники, увеличенные ворота">
+          <div class="catalog-description">
+            <h3>Гараж 11×6 м</h3>
+            <p>Гараж для <span class="highlight">спецтехники</span> с увеличенными воротами. Высота 4.5 м, возможность хранения высокой техники.</p>
+          </div>
+        </div>
+        
+        <!-- Гараж 12x6 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Garag_12x6.jpg" alt="Объёмный гараж широкого назначения">
+          <div class="catalog-description">
+            <h3>Гараж 12×6 м</h3>
+            <p>Объемное помещение <span class="highlight">широкого назначения</span>. Подходит для хранения техники, оборудования и коммерческого использования.</p>
+          </div>
+        </div>
+        
+        <!-- Гараж 15x6 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Garag_15x6.jpg" alt="Гараж для двух автомобилей с навесом и с техническим помещением">
+          <div class="catalog-description">
+            <h3>Гараж 15×6 м</h3>
+            <p>Гараж для <span class="highlight">двух автомобилей с навесом и техническим помещением</span>. Идеальное решение для коммерческого использования.</p>
+          </div>
+        </div>
+        
+        <!-- Склад 36x36 -->
+        <div class="catalog-item">
+          <img src="/krasunit/projects/Sklad_36x36.jpg" alt="Склад с кран-балкой">
+          <div class="catalog-description">
+            <h3>Склад 36×36 м</h3>
+            <p>Коммерческий склад с <span class="highlight">кран-балкой</span>. Подходит для хранения крупногабаритных грузов, оборудования и техники.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1000,7 +898,7 @@
   <!-- Форма заявки -->
   <section class="section">
     <div class="contact-form fade-in">
-      <h3>Получите точный расчёт</h3>
+      <h3>Получите консультацию</h3>
       <p>Оставьте заявку, и наш менеджер свяжется с вами в течение 2 часов для обсуждения вашего проекта.</p>
       
       <form id="contactForm">
@@ -1112,7 +1010,7 @@
       };
       
       // Формируем сообщение для телеграм
-      const message = `🔔 НОВАЯ ЗАЯВКА СО СТРАНИЦЫ "КАТАЛОГ ГАРАЖЕЙ" KRASUNIT!\n\n` +
+      const message = `🔔 НОВАЯ ЗАЯВКА СО СТРАНИЦЫ "КАТАЛОГ" KRASUNIT!\n\n` +
                       `ГОРОД: ${data.city}\n` +
                       `ТЕЛЕФОН: ${data.phone}\n` +
                       `EMAIL: ${data.email}\n` +
