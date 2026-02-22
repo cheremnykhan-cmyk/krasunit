@@ -175,41 +175,68 @@
     }
     
     /* Герой-секция */
-    <!-- Навигация -->
-<nav class="navbar">
-  <div class="navbar-container">
-    <!-- ЛОГОТИП БЕЗ ССЫЛКИ (убран тег <a>) -->
-    <div class="logo">
-      <img src="/krasunit/Logo.JPG" alt="КрасЮнит" class="logo-img">
-      <span class="logo-text">Крас<span>Юнит</span></span>
-    </div>
+    .hero {
+      height: 100vh;
+      min-height: 700px;
+      background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), 
+                  url('/krasunit/projects/Boks_6x15.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      padding-top: 0 !important;
+      margin-top: -80px; /* Компенсация отступа body */
+    }
     
-    <button class="mobile-menu-btn" id="mobileMenuBtn">
-      ☰
-    </button>
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(84, 160, 255, 0.15) 0%, transparent 70%);
+      animation: pulse 20s infinite;
+      z-index: 0;
+    }
     
-    <ul class="nav-links" id="navLinks">
-      <li class="nav-item active"><a href="#projects">Проекты</a></li>
-      <li class="nav-item"><a href="#features">Преимущества</a></li>
-      <li class="nav-item"><a href="/krasunit/garages.html">Каталог</a></li>
-      <li class="nav-item"><a href="/krasunit/calculator.html">Калькулятор</a></li>
-      <li class="nav-item"><a href="/krasunit/about.html">О компании</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- Герой-секция -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Гаражи из ЛСТК под ключ</h1>
-    <p>Строим за 5 дней • Экономим 40% на отоплении • Гарантия 10 лет</p>
-    <div class="hero-buttons">
-      <!-- ИСПРАВЛЕНО: ссылка "Посмотреть проекты" ведет в каталог -->
-      <a href="/krasunit/garages.html" class="btn btn-primary">Посмотреть проекты</a>
-      <a href="/krasunit/calculator.html" class="btn btn-secondary">Рассчитать стоимость</a>
-    </div>
-  </div>
-</section>
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.1; }
+      50% { transform: scale(1.1); opacity: 0.2; }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 0 30px;
+    }
+    
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      margin-bottom: 25px;
+      line-height: 1.1;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero p {
+      font-size: 1.9rem;
+      font-weight: 300;
+      margin-bottom: 45px;
+      opacity: 0.95;
+      line-height: 1.4;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
     
     .btn {
       padding: 18px 45px;
