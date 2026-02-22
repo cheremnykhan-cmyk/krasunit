@@ -168,9 +168,18 @@
       display: none;
       background: none;
       border: none;
-      font-size: 1.8rem;
+      font-size: 2.4rem; /* Увеличен размер кнопки */
       color: var(--graphite);
       cursor: pointer;
+      padding: 10px;
+      margin: -10px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s;
+      z-index: 1001;
+    }
+    
+    .mobile-menu-btn:hover {
+      transform: scale(1.15);
     }
     
     /* Герой-секция */
@@ -339,115 +348,82 @@
       margin-right: auto;
     }
     
-    /* Каталог гаражей */
-    /* Каталог гаражей */
-.catalog {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 30px;
-}
-
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 35px;
-}
-
-.catalog-item {
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  position: relative;
-  cursor: pointer;
-}
-
-.catalog-item:hover {
-  transform: translateY(-15px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-}
-
-/* ИСПРАВЛЕНО: убрана фиксированная высота для мобильных устройств */
-.catalog-item img {
-  width: 100%;
-  height: auto; /* Важно: автоматическая высота вместо фиксированной */
-  min-height: 250px; /* Минимальная высота для сохранения пропорций */
-  object-fit: cover;
-  transition: transform 0.7s ease;
-}
-
-.catalog-item:hover img {
-  transform: scale(1.1);
-}
-
-.catalog-description {
-  padding: 25px;
-  text-align: center;
-}
-
-.catalog-description h3 {
-  font-size: 1.8rem;
-  color: var(--graphite);
-  margin-bottom: 15px;
-}
-
-.catalog-description p {
-  color: #555;
-  line-height: 1.7;
-  font-size: 1.15rem;
-}
-
-.highlight {
-  color: var(--sky-blue);
-  font-weight: 700;
-}
-
-/* ИСПРАВЛЕНО: обновлены медиа-запросы */
-@media (max-width: 768px) {
-  .catalog-grid {
-    grid-template-columns: 1fr; /* Одна колонка на мобильных */
-  }
-  
-  .catalog-item {
-    height: auto; /* Убрана фиксированная высота */
-  }
-  
-  /* ИСПРАВЛЕНО: убраны фиксированные высоты для изображений */
-  .catalog-item img {
-    min-height: 220px; /* Немного уменьшена минимальная высота */
-    height: auto; /* Важно: автоматическая высота */
-  }
-  
-  .contact-form {
-    padding: 30px 20px;
-  }
-}
-
-/* ИСПРАВЛЕНО: обновлены медиа-запросы для маленьких экранов */
-@media (max-width: 480px) {
-  .catalog-item img {
-    min-height: 180px; /* Еще меньше минимальная высота */
-    height: auto;
-  }
-  
-  .catalog-description h3 {
-    font-size: 1.6rem;
-  }
-  
-  .catalog-description p {
-    font-size: 1.05rem;
-  }
-  
-  .contact-form {
-    padding: 25px 15px;
-  }
-  
-  button {
-    padding: 14px 22px;
-    font-size: 1.05rem;
-  }
-}
+    /* Каталог гаражей - ИСПРАВЛЕНО ДЛЯ МОБИЛЬНЫХ */
+    .catalog {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+    
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 35px;
+    }
+    
+    .catalog-item {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .catalog-item:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* ИСПРАВЛЕНО: корректная загрузка изображений на мобильных */
+    .catalog-item img {
+      width: 100%;
+      height: auto; /* Важно: автоматическая высота */
+      min-height: 280px; /* Минимальная высота для сохранения пропорций */
+      object-fit: cover;
+      display: block; /* Убирает лишний отступ под изображением */
+      transition: transform 0.7s ease;
+    }
+    
+    .catalog-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    /* Резервный фон на случай ошибки загрузки */
+    .catalog-item img::before {
+      content: '';
+      display: block;
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    .catalog-description {
+      padding: 25px;
+      text-align: center;
+    }
+    
+    .catalog-description h3 {
+      font-size: 1.8rem;
+      color: var(--graphite);
+      margin-bottom: 15px;
+    }
+    
+    .catalog-description p {
+      color: #555;
+      line-height: 1.7;
+      font-size: 1.15rem;
+    }
+    
+    .highlight {
+      color: var(--sky-blue);
+      font-weight: 700;
+    }
     
     /* Форма заявки */
     .contact-form {
@@ -660,7 +636,10 @@
         flex-direction: column;
         padding: 40px 0;
         transition: left 0.4s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
       }
       
       .nav-links.active {
@@ -668,15 +647,36 @@
       }
       
       .nav-item {
-        margin: 10px 0;
+        margin: 12px 0;
       }
       
       .nav-item a {
         display: block;
         width: 100%;
         text-align: center;
-        padding: 15px 0;
-        font-size: 1.4rem;
+        padding: 20px 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+        min-height: 65px;
+        transition: all 0.3s;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      
+      .nav-item a:hover {
+        background: #f0f7ff;
+        transform: translateX(8px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-item a::after {
+        display: none;
+      }
+      
+      .nav-item.active a {
+        background: #e3f2fd;
+        color: var(--sky-blue);
+        font-weight: 700;
+        border-left: 4px solid var(--sky-blue);
       }
       
       .hero h1 {
@@ -707,15 +707,13 @@
       }
       
       .catalog-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
       }
       
-      .catalog-item {
-        height: auto;
-      }
-      
+      /* ИСПРАВЛЕНО: изображения на мобильных */
       .catalog-item img {
-        height: 280px;
+        min-height: 240px; /* Уменьшена минимальная высота для мобильных */
+        height: auto;
       }
       
       .contact-form {
@@ -747,8 +745,10 @@
         font-size: 2rem;
       }
       
+      /* ИСПРАВЛЕНО: изображения на маленьких экранах */
       .catalog-item img {
-        height: 250px;
+        min-height: 200px; /* Еще меньше минимальная высота */
+        height: auto;
       }
       
       .catalog-description h3 {
@@ -817,7 +817,7 @@
       <div class="catalog-grid">
         <!-- Гаражи 6x15 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Boks_6x15.jpg" alt="Комфортный гараж для 5 легковых автомобилей">
+          <img src="/krasunit/projects/Boks_6x15.jpg" alt="Комфортный гараж для 5 легковых автомобилей" loading="lazy">
           <div class="catalog-description">
             <h3>Комфортный гараж 6×15 м</h3>
             <p>Идеальное решение для <span class="highlight">5 легковых автомобилей</span>. Широкие проезды, удобная планировка, возможность установки технического помещения.</p>
@@ -826,25 +826,25 @@
         
         <!-- Гаражи 9x15 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Boks_9x15.jpg" alt="Гараж для грузового автомобиля с одними воротами и с техническим помещением">
+          <img src="/krasunit/projects/Boks_9x15.jpg" alt="Гараж для грузового автомобиля с одними воротами и с техническим помещением" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 9×15 м</h3>
             <p>Просторное помещение для <span class="highlight">грузового автомобиля</span> с одними воротами и техническим помещением. Идеально подходит для коммерческого использования.</p>
           </div>
         </div>
         
-        <!-- Эллинг 3x4 -->
+        <!-- Эллинг 3x4 - ИСПРАВЛЕНО: заменены пробелы на %20 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Elling 3x4.jpg" alt="Эллинг для гидроцикла">
+          <img src="/krasunit/projects/Elling%203x4.jpg" alt="Эллинг для гидроцикла" loading="lazy">
           <div class="catalog-description">
             <h3>Эллинг 3×4 м</h3>
             <p>Компактное решение для <span class="highlight">гидроцикла</span> и водного транспорта. Водонепроницаемое покрытие, удобные подъезды.</p>
           </div>
         </div>
         
-        <!-- Эллинг 12x8 -->
+        <!-- Эллинг 12x8 - ИСПРАВЛЕНО: заменены пробелы на %20 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Elling 12x8.jpg" alt="Эллинг с кран-балкой">
+          <img src="/krasunit/projects/Elling%2012x8.jpg" alt="Эллинг с кран-балкой" loading="lazy">
           <div class="catalog-description">
             <h3>Эллинг 12×8 м</h3>
             <p>Просторный эллинг с <span class="highlight">кран-балкой</span> для обслуживания яхт и катеров. Система осушения, стапель для ремонта.</p>
@@ -853,7 +853,7 @@
         
         <!-- Гараж 4x4 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Garag_4x4.jpg" alt="Гараж для загородного дома">
+          <img src="/krasunit/projects/Garag_4x4.jpg" alt="Гараж для загородного дома" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 4×4 м</h3>
             <p>Компактный гараж для <span class="highlight">загородного дома</span>. Идеально подходит для одного легкового автомобиля, экономия места и средств.</p>
@@ -862,16 +862,16 @@
         
         <!-- Гараж 5x5 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Garag_5x5.jpg" alt="Многофункциональный гараж с большими воротами">
+          <img src="/krasunit/projects/Garag_5x5.jpg" alt="Многофункциональный гараж с большими воротами" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 5×5 м</h3>
             <p>Многофункциональное помещение с <span class="highlight">большими воротами</span>. Подходит для легкового автомобиля и дополнительного хранения.</p>
           </div>
         </div>
         
-        <!-- Гараж 6x5 с окном -->
+        <!-- Гараж 6x5 с окном - ИСПРАВЛЕНО: заменены пробелы на %20 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Garag_6x5_win.jpg" alt="Гараж для двух автомобилей с окном">
+          <img src="/krasunit/projects/Garag_6x5_win.jpg" alt="Гараж для двух автомобилей с окном" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 6×5 м</h3>
             <p>Гараж для <span class="highlight">двух автомобилей</span> с окном для естественного освещения. Светлое и удобное пространство для хранения.</p>
@@ -880,7 +880,7 @@
         
         <!-- Гараж 6x6 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Garag_6x6.jpg" alt="Просторный гараж для легкового автомобиля, снегохода и квадроцикла">
+          <img src="/krasunit/projects/Garag_6x6.jpg" alt="Просторный гараж для легкового автомобиля, снегохода и квадроцикла" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 6×6 м</h3>
             <p>Просторный гараж для <span class="highlight">легкового автомобиля, снегохода и квадроцикла</span>. Оптимальное соотношение цены и функциональности.</p>
@@ -889,7 +889,7 @@
         
         <!-- Гараж 9x6 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Garag_9x6.jpg" alt="Вместительный гараж для двух внедорожников, снегохода, квадроцикла">
+          <img src="/krasunit/projects/Garag_9x6.jpg" alt="Вместительный гараж для двух внедорожников, снегохода, квадроцикла" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 9×6 м</h3>
             <p>Вместительное помещение для <span class="highlight">двух внедорожников, снегохода, квадроцикла</span>. Просторная планировка, возможность установки технического помещения.</p>
@@ -898,7 +898,7 @@
         
         <!-- Гараж 9x9 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Garag_9x9.jpg" alt="Универсальный, вместительный гараж с двумя воротами">
+          <img src="/krasunit/projects/Garag_9x9.jpg" alt="Универсальный, вместительный гараж с двумя воротами" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 9×9 м</h3>
             <p>Универсальное решение с <span class="highlight">двумя воротами</span>. Подходит для хранения техники, коммерческого использования и гаражного ремонта.</p>
@@ -907,7 +907,7 @@
         
         <!-- Гараж 11x6 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Garag_11x6.jpg" alt="Гараж для спецтехники, увеличенные ворота">
+          <img src="/krasunit/projects/Garag_11x6.jpg" alt="Гараж для спецтехники, увеличенные ворота" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 11×6 м</h3>
             <p>Гараж для <span class="highlight">спецтехники</span> с увеличенными воротами. Высота 4.5 м, возможность хранения высокой техники.</p>
@@ -916,7 +916,7 @@
         
         <!-- Гараж 12x6 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Garag_12x6.jpg" alt="Объёмный гараж широкого назначения">
+          <img src="/krasunit/projects/Garag_12x6.jpg" alt="Объёмный гараж широкого назначения" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 12×6 м</h3>
             <p>Объемное помещение <span class="highlight">широкого назначения</span>. Подходит для хранения техники, оборудования и коммерческого использования.</p>
@@ -925,7 +925,7 @@
         
         <!-- Гараж 15x6 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Garag_15x6.jpg" alt="Гараж для двух автомобилей с навесом и с техническим помещением">
+          <img src="/krasunit/projects/Garag_15x6.jpg" alt="Гараж для двух автомобилей с навесом и с техническим помещением" loading="lazy">
           <div class="catalog-description">
             <h3>Гараж 15×6 м</h3>
             <p>Гараж для <span class="highlight">двух автомобилей с навесом и техническим помещением</span>. Идеальное решение для коммерческого использования.</p>
@@ -934,7 +934,7 @@
         
         <!-- Склад 36x36 -->
         <div class="catalog-item">
-          <img src="/krasunit/projects/Sklad_36x36.jpg" alt="Склад с кран-балкой">
+          <img src="/krasunit/projects/Sklad_36x36.jpg" alt="Склад с кран-балкой" loading="lazy">
           <div class="catalog-description">
             <h3>Склад 36×36 м</h3>
             <p>Коммерческий склад с <span class="highlight">кран-балкой</span>. Подходит для хранения крупногабаритных грузов, оборудования и техники.</p>
