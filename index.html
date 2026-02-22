@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>КрасЮнит — гаражи и ангары из ЛСТК под ключ по всей России</title>
-  <meta name="description" content="Строим гаражи из ЛСТК за 5 дней. Экономия 40% на отоплении. Гарантия 10 лет. Рассчитайте стоимость онлайн!">
-  <meta property="og:title" content="КрасЮнит — гаражи из ЛСТК под ключ">
+  <meta name="description" content="Строим гаражи, ангары и склады из ЛСТК за 5 дней. Экономия 40% на отоплении. Гарантия 10 лет. Рассчитайте стоимость онлайн!">
+  <meta name="keywords" content="гараж из ЛСТК, ангар из сэндвич панелей, склад под ключ, строительство ангаров, ЛСТК конструкции">
+  <meta property="og:title" content="КрасЮнит — гаражи и ангары из ЛСТК под ключ">
   <meta property="og:description" content="Строим за 5 дней • Экономим 40% на отоплении • Гарантия 10 лет">
   <link rel="icon" href="/krasunit/favicon.ico" type="image/x-icon">
   <!-- Yandex.Metrika counter -->
@@ -169,9 +170,18 @@
       display: none;
       background: none;
       border: none;
-      font-size: 1.8rem;
+      font-size: 2.4rem;
       color: var(--graphite);
       cursor: pointer;
+      padding: 10px;
+      margin: -10px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s;
+      z-index: 1001;
+    }
+    
+    .mobile-menu-btn:hover {
+      transform: scale(1.15);
     }
     
     /* Герой-секция */
@@ -179,7 +189,7 @@
       height: 100vh;
       min-height: 700px;
       background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), 
-                  url('/krasunit/projects/Boks_6x15.jpg') center/cover no-repeat;
+                  url('/krasunit/projects/garage-9x11-business.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -340,42 +350,6 @@
       margin-right: auto;
     }
     
-    /* Галерея проектов (БЕЗ ОПИСАНИЙ!) */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 35px;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 30px;
-    }
-    
-    .gallery-item {
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      height: 420px;
-      position: relative;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-    
-    .gallery-item:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-    }
-    
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.7s ease;
-    }
-    
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-    
     /* Преимущества */
     .features {
       background: linear-gradient(135deg, #f8fafd 0%, #fcfdff 100%);
@@ -439,6 +413,42 @@
       color: #555;
       line-height: 1.7;
       font-size: 1.15rem;
+    }
+    
+    /* Галерея проектов (БЕЗ ОПИСАНИЙ!) */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 35px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+    
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 420px;
+      position: relative;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
     }
     
     /* Футер */
@@ -587,7 +597,10 @@
         flex-direction: column;
         padding: 40px 0;
         transition: left 0.4s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
       }
       
       .nav-links.active {
@@ -595,15 +608,36 @@
       }
       
       .nav-item {
-        margin: 10px 0;
+        margin: 12px 0;
       }
       
       .nav-item a {
         display: block;
         width: 100%;
         text-align: center;
-        padding: 15px 0;
-        font-size: 1.4rem;
+        padding: 20px 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+        min-height: 65px;
+        transition: all 0.3s;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      
+      .nav-item a:hover {
+        background: #f0f7ff;
+        transform: translateX(8px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-item a::after {
+        display: none;
+      }
+      
+      .nav-item.active a {
+        background: #e3f2fd;
+        color: var(--sky-blue);
+        font-weight: 700;
+        border-left: 4px solid var(--sky-blue);
       }
       
       .hero h1 {
@@ -688,10 +722,11 @@
   <!-- Навигация -->
   <nav class="navbar">
     <div class="navbar-container">
-      <a href="/" class="logo">
+      <!-- ЛОГОТИП БЕЗ ССЫЛКИ -->
+      <div class="logo">
         <img src="/krasunit/Logo.JPG" alt="КрасЮнит" class="logo-img">
         <span class="logo-text">Крас<span>Юнит</span></span>
-      </a>
+      </div>
       
       <button class="mobile-menu-btn" id="mobileMenuBtn">
         ☰
@@ -713,17 +748,64 @@
       <h1>Гаражи из ЛСТК под ключ</h1>
       <p>Строим за 5 дней • Экономим 40% на отоплении • Гарантия 10 лет</p>
       <div class="hero-buttons">
-        <a href="#projects" class="btn btn-primary">Посмотреть проекты</a>
+        <!-- ИСПРАВЛЕНО: ссылка ведет в каталог -->
+        <a href="/krasunit/garages.html" class="btn btn-primary">Посмотреть проекты</a>
         <a href="/krasunit/calculator.html" class="btn btn-secondary">Рассчитать стоимость</a>
       </div>
     </div>
   </section>
 
-  <!-- Галерея проектов (БЕЗ ОПИСАНИЙ!) -->
+  <!-- Преимущества -->
+  <section id="features" class="section features">
+    <div class="section-title fade-in">
+      <h2>Почему выбирают нас</h2>
+      <p>Ключевые преимущества строительства из ЛСТК</p>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <img src="/krasunit/projects/feature-1.jpg" alt="Экономия на отоплении" class="feature-img">
+        <div class="feature-content">
+          <div class="feature-icon">🔥</div>
+          <h3>Экономия на отоплении</h3>
+          <p>Снижаем затраты на обогрев на 40% благодаря сэндвич-панелям 150 мм. При -40°C внутри +15°C без дополнительного обогрева.</p>
+        </div>
+      </div>
+      
+      <div class="feature-card fade-in">
+        <img src="/krasunit/projects/feature-2.jpg" alt="Быстрый монтаж" class="feature-img">
+        <div class="feature-content">
+          <div class="feature-icon">⚡</div>
+          <h3>Быстрый монтаж</h3>
+          <p>Собираем за 5 дней — ваш гараж готов к эксплуатации мгновенно. Не нужно ждать набора прочности бетона.</p>
+        </div>
+      </div>
+      
+      <div class="feature-card fade-in">
+        <img src="/krasunit/projects/feature-3.jpg" alt="Долговечность" class="feature-img">
+        <div class="feature-content">
+          <div class="feature-icon">🛡️</div>
+          <h3>Долговечность</h3>
+          <p>Гарантия 10 лет, фактический срок службы — более 50 лет. ЛСТК не подвержен коррозии, не горит и не гниет.</p>
+        </div>
+      </div>
+      
+      <div class="feature-card fade-in">
+        <img src="/krasunit/projects/feature-4.jpg" alt="Облегченный фундамент" class="feature-img">
+        <div class="feature-content">
+          <div class="feature-icon">🏗️</div>
+          <h3>Облегченный фундамент</h3>
+          <p>Экономия 60% на фундаменте благодаря легкому весу конструкции. Используем свайно-винтовые или столбчатые фундаменты.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Галерея проектов -->
   <section id="projects" class="section">
     <div class="section-title fade-in">
-      <h2>Дизайнерские проекты</h2>
-      <p>Воплотим в реальность любую вашу мечту</p>
+      <h2>Наши проекты</h2>
+      <p>Реальные гаражи и ангары, построенные по всей России</p>
     </div>
     
     <div class="gallery">
@@ -748,53 +830,7 @@
       </div>
       
       <div class="gallery-item fade-in">
-        <img src="/krasunit/projects/garage-3x5_Strong.jpg" alt="Овощехранилище">
-      </div>
-    </div>
-  </section>
-
-  <!-- Преимущества -->
-  <section id="features" class="section features">
-    <div class="section-title fade-in">
-      <h2>Почему выбирают нас</h2>
-      <p>Ключевые преимущества строительства из ЛСТК</p>
-    </div>
-    
-    <div class="features-grid">
-      <div class="feature-card fade-in">
-        <img src="/krasunit/projects/garage-5x8-real.jpg" alt="Экономия на отоплении" class="feature-img">
-        <div class="feature-content">
-          <div class="feature-icon">🔥</div>
-          <h3>Экономия на отоплении</h3>
-          <p>Снижаем затраты на обогрев на 40% благодаря сэндвич-панелям 150 мм. При -40°C внутри +15°C без дополнительного обогрева.</p>
-        </div>
-      </div>
-      
-      <div class="feature-card fade-in">
-        <img src="/krasunit/projects/garage-9x11-real.jpg" alt="Быстрый монтаж" class="feature-img">
-        <div class="feature-content">
-          <div class="feature-icon">⚡</div>
-          <h3>Быстрый монтаж</h3>
-          <p>Собираем за 5 дней — ваш гараж готов к эксплуатации мгновенно. Не нужно ждать набора прочности бетона.</p>
-        </div>
-      </div>
-      
-      <div class="feature-card fade-in">
-        <img src="/krasunit/projects/garage-12x18-real.jpg" alt="Долговечность" class="feature-img">
-        <div class="feature-content">
-          <div class="feature-icon">🛡️</div>
-          <h3>Долговечность</h3>
-          <p>Гарантия 10 лет, фактический срок службы — более 50 лет. ЛСТК не подвержен коррозии, не горит и не гниет.</p>
-        </div>
-      </div>
-      
-      <div class="feature-card fade-in">
-        <img src="/krasunit/projects/Naves_24x18.jpg" alt="Облегченный фундамент" class="feature-img">
-        <div class="feature-content">
-          <div class="feature-icon">🏗️</div>
-          <h3>Облегченный фундамент</h3>
-          <p>Экономия 60% на фундаменте благодаря легкому весу конструкции. Используем свайно-винтовые или столбчатые фундаменты.</p>
-        </div>
+        <img src="/krasunit/projects/garage-3x5-Strong.jpg" alt="Овощехранилище">
       </div>
     </div>
   </section>
